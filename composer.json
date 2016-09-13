@@ -1,13 +1,13 @@
 {
-    "name":        "arcanedev/log-viewer",
+    "name":        "powerplanetonline/log-viewer",
     "description": "Provides a Log Viewer for Laravel 5",
     "keywords":    ["arcanedev", "arcanesoft", "laravel", "log", "log viewer", "log-viewer", "logviewer"],
-    "homepage":    "https://github.com/ARCANEDEV/LogViewer",
+    "homepage":    "https://github.com/powerplanetonline/LogViewer",
     "authors": [
         {
-            "name":     "ARCANEDEV",
-            "email":    "arcanedev.maroc@gmail.com",
-            "homepage": "https://github.com/arcanedev-maroc",
+            "name":     "powerplanetonline.com",
+            "email":    "it@powerplanetonline.com",
+            "homepage": "https://github.com/powerplanetonline",
             "role":     "Developer"
         }
     ],
@@ -24,13 +24,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Arcanedev\\LogViewer\\": "src/"
+            "Powerplanetonline\\LogViewer\\": "src/"
         },
         "files": ["constants.php", "helpers.php"]
     },
     "autoload-dev": {
         "psr-4": {
-            "Arcanedev\\LogViewer\\Tests\\": "tests/"
+            "Powerplanetonline\\LogViewer\\Tests\\": "tests/"
         }
     },
     "scripts": {
