@@ -1,7 +1,7 @@
 <?php namespace Arcanedev\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\Utilities\LogStyler as LogStylerContract;
-use Illuminate\Contracts\Config\Repository as ConfigContract;
+use Arcanedev\LogViewer\Contracts\LogStylerInterface;
+use Illuminate\Contracts\Config\Repository as Config;
 
 /**
  * Class     LogStyler
@@ -9,7 +9,7 @@ use Illuminate\Contracts\Config\Repository as ConfigContract;
  * @package  Arcanedev\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class LogStyler implements LogStylerContract
+class LogStyler implements LogStylerInterface
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
@@ -18,7 +18,7 @@ class LogStyler implements LogStylerContract
     /**
      * The config repository instance.
      *
-     * @var \Illuminate\Contracts\Config\Repository
+     * @var Config
      */
     protected $config;
 
@@ -29,9 +29,9 @@ class LogStyler implements LogStylerContract
     /**
      * Create a new instance.
      *
-     * @param  \Illuminate\Contracts\Config\Repository  $config
+     * @param  Config  $config
      */
-    public function __construct(ConfigContract $config)
+    public function __construct(Config $config)
     {
         $this->config = $config;
     }
@@ -43,14 +43,14 @@ class LogStyler implements LogStylerContract
     /**
      * Get config.
      *
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param  string      $key
+     * @param  mixed|null  $default
      *
      * @return mixed
      */
     private function get($key, $default = null)
     {
-        return $this->config->get("log-viewer.$key", $default);
+        return $this->config->get('log-viewer.' . $key, $default);
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ class LogStyler implements LogStylerContract
      */
     public function icon($level, $default = null)
     {
-        return '<i class="'.$this->get("icons.$level", $default).'"></i>';
+        return '<i class="' . $this->get('icons.' . $level, $default) . '"></i>';
     }
 
     /**
@@ -80,6 +80,6 @@ class LogStyler implements LogStylerContract
      */
     public function color($level, $default = null)
     {
-        return $this->get("colors.levels.$level", $default);
+        return $this->get('colors.levels.' . $level, $default);
     }
 }

@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\Utilities\Filesystem as FilesystemContract;
+use Arcanedev\LogViewer\Contracts\FilesystemInterface;
 use Arcanedev\LogViewer\Exceptions\FilesystemException;
 use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
 
@@ -10,7 +10,7 @@ use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
  * @package  Arcanedev\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class Filesystem implements FilesystemContract
+class Filesystem implements FilesystemInterface
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
@@ -56,7 +56,7 @@ class Filesystem implements FilesystemContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Filesystem constructor.
+     * Create a new instance.
      *
      * @param  \Illuminate\Filesystem\Filesystem  $files
      * @param  string                             $storagePath
@@ -87,7 +87,7 @@ class Filesystem implements FilesystemContract
      *
      * @param  string  $storagePath
      *
-     * @return \Arcanedev\LogViewer\Utilities\Filesystem
+     * @return self
      */
     public function setPath($storagePath)
     {
@@ -113,7 +113,7 @@ class Filesystem implements FilesystemContract
      * @param  string  $prefix
      * @param  string  $extension
      *
-     * @return \Arcanedev\LogViewer\Utilities\Filesystem
+     * @return self
      */
     public function setPattern(
         $prefix    = self::PATTERN_PREFIX,
@@ -132,7 +132,7 @@ class Filesystem implements FilesystemContract
      *
      * @param  string  $datePattern
      *
-     * @return \Arcanedev\LogViewer\Utilities\Filesystem
+     * @return self
      */
     public function setDatePattern($datePattern)
     {
@@ -146,7 +146,7 @@ class Filesystem implements FilesystemContract
      *
      * @param  string  $prefixPattern
      *
-     * @return \Arcanedev\LogViewer\Utilities\Filesystem
+     * @return self
      */
     public function setPrefixPattern($prefixPattern)
     {
@@ -160,7 +160,7 @@ class Filesystem implements FilesystemContract
      *
      * @param  string  $extension
      *
-     * @return \Arcanedev\LogViewer\Utilities\Filesystem
+     * @return self
      */
     public function setExtension($extension)
     {
@@ -196,7 +196,7 @@ class Filesystem implements FilesystemContract
     /**
      * List the log files (Only dates).
      *
-     * @param  bool  $withPaths
+     * @param  bool|false  $withPaths
      *
      * @return array
      */
@@ -248,7 +248,9 @@ class Filesystem implements FilesystemContract
 
         // @codeCoverageIgnoreStart
         if ( ! $this->filesystem->delete($path)) {
-            throw new FilesystemException('There was an error deleting the log.');
+            throw new FilesystemException(
+                'There was an error deleting the log.'
+            );
         }
         // @codeCoverageIgnoreEnd
 
@@ -261,6 +263,8 @@ class Filesystem implements FilesystemContract
      * @param  string  $date
      *
      * @return string
+     *
+     * @throws \Arcanedev\LogViewer\Exceptions\FilesystemException
      */
     public function path($date)
     {
@@ -281,7 +285,8 @@ class Filesystem implements FilesystemContract
     private function getFiles($pattern)
     {
         $files = $this->filesystem->glob(
-            $this->storagePath.DS.$pattern, GLOB_BRACE
+            $this->storagePath . DS . $pattern,
+            GLOB_BRACE
         );
 
         return array_filter(array_map('realpath', $files));
@@ -301,7 +306,9 @@ class Filesystem implements FilesystemContract
         $path = $this->storagePath . DS . $this->prefixPattern . $date . $this->extension;
 
         if ( ! $this->filesystem->exists($path)) {
-            throw new FilesystemException("The log(s) could not be located at : $path");
+            throw new FilesystemException(
+                'The log(s) could not be located at : ' . $path
+            );
         }
 
         return realpath($path);

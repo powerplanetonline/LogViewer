@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\LogViewer\Entities;
 
-use Arcanedev\LogViewer\Helpers\LogParser;
+use Arcanedev\LogViewer\Utilities\LogParser;
 use Arcanedev\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -17,7 +17,7 @@ class LogEntryCollection extends Collection
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Load raw log entries.
+     * Load raw log entries
      *
      * @param  string  $raw
      *
@@ -26,8 +26,8 @@ class LogEntryCollection extends Collection
     public function load($raw)
     {
         foreach (LogParser::parse($raw) as $entry) {
-            list($level, $header, $stack) = array_values($entry);
 
+            list($level, $header, $stack) = array_values($entry);
             $this->push(new LogEntry($level, $header, $stack));
         }
 
@@ -39,28 +39,30 @@ class LogEntryCollection extends Collection
      *
      * @param  int  $perPage
      *
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return LengthAwarePaginator
      */
-    public function paginate($perPage = 20)
+    public function paginate($perPage = 20, $menulevel = null)
     {
-        $request   = request();
-        $page      = $request->input('page', 1);
-        $paginator = new LengthAwarePaginator(
-            $this->slice(($page * $perPage) - $perPage, $perPage),
-            $this->count(),
-            $perPage,
-            $page
-        );
+        $page      = request()->input('page', 1);
+        $items     = $this->slice(($page * $perPage) - $perPage, $perPage, true);
+        foreach ($items as $key => $value) {
 
-        return $paginator->setPath($request->url());
+          if ($value->level == 'info' && $menulevel != 'all')
+            $value->header = json_decode($value->header);
+        }
+        $paginator = new LengthAwarePaginator($items, $this->count(), $perPage, $page);
+
+        $paginator->setPath(request()->url());
+
+        return $paginator;
     }
 
     /**
-     * Get filtered log entries by level.
+     * Get filtered log entries by level
      *
      * @param  string  $level
      *
-     * @return \Arcanedev\LogViewer\Entities\LogEntryCollection
+     * @return LogEntryCollection
      */
     public function filterByLevel($level)
     {

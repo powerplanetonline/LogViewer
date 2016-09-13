@@ -53,12 +53,12 @@ class LogViewerServiceProvider extends ServiceProvider
     {
         $this->registerConfig();
 
-        $this->app->register(Providers\UtilitiesServiceProvider::class);
+        $this->app->register('Arcanedev\\LogViewer\\Providers\\UtilitiesServiceProvider');
         $this->registerLogViewer();
         $this->registerAliases();
 
         if ($this->app->runningInConsole()) {
-            $this->app->register(Providers\CommandsServiceProvider::class);
+            $this->app->register('Arcanedev\\LogViewer\\Providers\\CommandsServiceProvider');
         }
     }
 
@@ -70,7 +70,7 @@ class LogViewerServiceProvider extends ServiceProvider
         $this->publishConfig();
         $this->publishViews();
         $this->publishTranslations();
-        $this->app->register(Providers\RouteServiceProvider::class);
+        $this->app->register('Arcanedev\\LogViewer\\Providers\\RouteServiceProvider');
     }
 
     /**
@@ -82,7 +82,7 @@ class LogViewerServiceProvider extends ServiceProvider
     {
         return [
             'arcanedev.log-viewer',
-            Contracts\LogViewer::class,
+            'Arcanedev\\LogViewer\\Contracts\\LogViewerInterface',
         ];
     }
 
@@ -95,14 +95,20 @@ class LogViewerServiceProvider extends ServiceProvider
      */
     private function registerLogViewer()
     {
-        $this->singleton('arcanedev.log-viewer', LogViewer::class);
+        $this->singleton(
+            'arcanedev.log-viewer',
+            'Arcanedev\\LogViewer\\LogViewer'
+        );
 
-        $this->bind(Contracts\LogViewer::class, 'arcanedev.log-viewer');
+        $this->bind(
+            'Arcanedev\\LogViewer\\Contracts\\LogViewerInterface',
+            'arcanedev.log-viewer'
+        );
 
         // Registering the Facade
         $this->alias(
-            $this->config()->get('log-viewer.facade', 'LogViewer'),
-            Facades\LogViewer::class
+            $this->app['config']->get('log-viewer.facade', 'LogViewer'),
+            'Arcanedev\\LogViewer\\Facades\\LogViewer'
         );
     }
 }

@@ -40,7 +40,7 @@
                     </td>
                     @endforeach
                     <td class="text-right">
-                        <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
+                        <a href="{{ route('log-viewer::logs.filter', [$date,'all']) }}" class="btn btn-xs btn-info">
                             <i class="fa fa-search"></i>
                         </a>
                         <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">

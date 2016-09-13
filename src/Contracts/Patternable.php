@@ -1,7 +1,5 @@
 <?php namespace Arcanedev\LogViewer\Contracts;
 
-use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
-
 /**
  * Interface  Patternable
  *
@@ -11,7 +9,7 @@ use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
 interface Patternable
 {
     /* ------------------------------------------------------------------------------------------------
-     |  Getters & Setters
+     |  Getters & Setters 
      | ------------------------------------------------------------------------------------------------
      */
     /**
@@ -31,8 +29,8 @@ interface Patternable
      * @return self
      */
     public function setPattern(
-        $prefix    = Filesystem::PATTERN_PREFIX,
-        $date      = Filesystem::PATTERN_DATE,
-        $extension = Filesystem::PATTERN_EXTENSION
+        $prefix    = FilesystemInterface::PATTERN_PREFIX,
+        $date      = FilesystemInterface::PATTERN_DATE,
+        $extension = FilesystemInterface::PATTERN_EXTENSION
     );
 }

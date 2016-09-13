@@ -26,7 +26,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     /** @var string */
     private $path;
 
-    /** @var \Arcanedev\LogViewer\Entities\LogEntryCollection */
+    /** @var LogEntryCollection */
     private $entries;
 
     /** @var SplFileInfo */
@@ -40,7 +40,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Log constructor.
+     * Constructor
      *
      * @param  string  $date
      * @param  string  $path
@@ -62,7 +62,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Get log path.
+     * Get log path
      *
      * @return string
      */
@@ -72,7 +72,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Get raw log content.
+     * Get raw log content
      *
      * @return string
      */
@@ -82,9 +82,9 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Get file info.
+     * Get file info
      *
-     * @return \SplFileInfo
+     * @return SplFileInfo
      */
     public function file()
     {
@@ -92,7 +92,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Get file size.
+     * Get file size
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Get file creation date.
+     * Get file creation date
      *
      * @return \Carbon\Carbon
      */
@@ -112,7 +112,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Get file modification date.
+     * Get file modification date
      *
      * @return \Carbon\Carbon
      */
@@ -126,7 +126,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Make a log object.
+     * Make a log object
      *
      * @param  string  $date
      * @param  string  $path
@@ -140,25 +140,27 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Get log entries.
+     * Get log entries
      *
      * @param  string  $level
      *
-     * @return \Arcanedev\LogViewer\Entities\LogEntryCollection
+     * @return LogEntryCollection
      */
     public function entries($level = 'all')
     {
-        if ($level === 'all') return $this->entries;
+        if ($level === 'all') {
+            return $this->entries;
+        }
 
         return $this->getByLevel($level);
     }
 
     /**
-     * Get filtered log entries by level.
+     * Get filtered log entries by level
      *
      * @param  string  $level
      *
-     * @return \Arcanedev\LogViewer\Entities\LogEntryCollection
+     * @return LogEntryCollection
      */
     public function getByLevel($level)
     {
@@ -178,7 +180,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     /**
      * Get the log navigation tree.
      *
-     * @param  bool  $trans
+     * @param  bool|false  $trans
      *
      * @return array
      */
@@ -190,7 +192,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     /**
      * Get log entries menu.
      *
-     * @param  bool  $trans
+     * @param  bool|true  $trans
      *
      * @return array
      */
@@ -230,7 +232,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
     }
 
     /**
-     * Serialize the log object to json data.
+     * Serialize the log object to json data
      *
      * @return array
      */
@@ -244,7 +246,7 @@ class Log implements Arrayable, Jsonable, JsonSerializable
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Format the file size.
+     * Format the file size
      *
      * @param  int  $bytes
      * @param  int  $precision

@@ -1,7 +1,8 @@
 <?php namespace Arcanedev\LogViewer\Http\Controllers;
 
 use Arcanedev\LogViewer\Bases\Controller;
-use Arcanedev\LogViewer\Exceptions\LogNotFoundException;
+use Arcanedev\LogViewer\Entities\Log;
+use Arcanedev\LogViewer\Exceptions\LogNotFound;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
@@ -18,15 +19,11 @@ class LogViewerController extends Controller
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /** @var int */
     protected $perPage = 30;
 
     /* ------------------------------------------------------------------------------------------------
      |  Constructor
      | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * LogViewerController constructor.
      */
     public function __construct()
     {
@@ -56,7 +53,10 @@ class LogViewerController extends Controller
     public function listLogs()
     {
         $stats   = $this->logViewer->statsTable();
+
         $headers = $stats->header();
+        // $footer   = $stats->footer();
+
         $page    = request('page', 1);
         $offset  = ($page * $this->perPage) - $this->perPage;
 
@@ -79,11 +79,11 @@ class LogViewerController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($date)
+    public function show($date,$area)
     {
         $log     = $this->getLogOrFail($date);
         $levels  = $this->logViewer->levelsNames();
-        $entries = $log->entries()->paginate($this->perPage);
+        $entries = $log->entries()->paginate($this->perPage,$area);
 
         return $this->view('show', compact('log', 'levels', 'entries'));
     }
@@ -96,20 +96,25 @@ class LogViewerController extends Controller
      *
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function showByLevel($date, $level)
-    {
-        $log = $this->getLogOrFail($date);
+     public function showByLevel($date, $level)
+     {
+         $log = $this->getLogOrFail($date);
+         $levels  = $this->logViewer->levelsNames();
 
-        if ($level == 'all')
-            return redirect()->route('log-viewer::logs.show', [$date]);
+         if ($level=='all')
+            $entries = $log->entries()->paginate($this->perPage,$level);
+        else
+            $entries = $this->logViewer
+                 ->entries($date, $level)
+                 ->paginate($this->perPage);
 
-        $levels  = $this->logViewer->levelsNames();
-        $entries = $this->logViewer
-            ->entries($date, $level)
-            ->paginate($this->perPage);
+         if ($level == 'info') {
 
-        return $this->view('show', compact('log', 'levels', 'entries'));
-    }
+             return $this->view('show-info', compact('log', 'levels', 'entries'));
+         }
+
+         return $this->view('show', compact('log', 'levels', 'entries'));
+     }
 
     /**
      * Download the log
@@ -130,8 +135,7 @@ class LogViewerController extends Controller
      */
     public function delete()
     {
-        if ( ! request()->ajax())
-            abort(405, 'Method Not Allowed');
+        if ( ! request()->ajax()) abort(405, 'Method Not Allowed');
 
         $date = request()->get('date');
         $ajax = [
@@ -150,7 +154,7 @@ class LogViewerController extends Controller
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log|null
+     * @return Log|null
      */
     private function getLogOrFail($date)
     {
@@ -159,7 +163,7 @@ class LogViewerController extends Controller
         try {
             $log = $this->logViewer->get($date);
         }
-        catch (LogNotFoundException $e) {
+        catch(LogNotFound $e) {
             abort(404, $e->getMessage());
         }
 
@@ -167,7 +171,7 @@ class LogViewerController extends Controller
     }
 
     /**
-     * Calculate the percentage.
+     * Calculate the percentage
      *
      * @param  array  $total
      * @param  array  $names

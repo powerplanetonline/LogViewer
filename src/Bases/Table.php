@@ -1,7 +1,8 @@
 <?php namespace Arcanedev\LogViewer\Bases;
 
-use Arcanedev\LogViewer\Contracts\Utilities\LogLevels as LogLevelsContract;
-use Arcanedev\LogViewer\Contracts\Table as TableContract;
+use Arcanedev\LogViewer\Contracts\LogLevelsInterface;
+use Arcanedev\LogViewer\Contracts\TableInterface;
+use Illuminate\Translation\Translator;
 
 /**
  * Class     Table
@@ -9,7 +10,7 @@ use Arcanedev\LogViewer\Contracts\Table as TableContract;
  * @package  Arcanedev\LogViewer\Bases
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-abstract class Table implements TableContract
+abstract class Table implements TableInterface
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
@@ -24,7 +25,7 @@ abstract class Table implements TableContract
     /** @var array  */
     private $footer  = [];
 
-    /** @var \Arcanedev\LogViewer\Contracts\Utilities\LogLevels */
+    /** @var LogLevelsInterface */
     protected $levels;
 
     /** @var string|null */
@@ -40,11 +41,11 @@ abstract class Table implements TableContract
     /**
      * Create a table instance.
      *
-     * @param  array                                               $data
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\LogLevels  $levels
-     * @param  string|null                                         $locale
+     * @param  array               $data
+     * @param  LogLevelsInterface  $levels
+     * @param  string|null         $locale
      */
-    public function __construct(array $data, LogLevelsContract $levels, $locale = null)
+    public function __construct(array $data, LogLevelsInterface $levels, $locale = null)
     {
         $this->setLevels($levels);
         $this->setLocale(is_null($locale) ? config('log-viewer.locale') : $locale);
@@ -59,11 +60,11 @@ abstract class Table implements TableContract
     /**
      * Set LogLevels instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\LogLevels  $levels
+     * @param  LogLevelsInterface  $levels
      *
-     * @return \Arcanedev\LogViewer\Bases\Table
+     * @return self
      */
-    protected function setLevels(LogLevelsContract $levels)
+    protected function setLevels(LogLevelsInterface $levels)
     {
         $this->levels = $levels;
 
@@ -75,7 +76,7 @@ abstract class Table implements TableContract
      *
      * @param  string|null  $locale
      *
-     * @return \Arcanedev\LogViewer\Bases\Table
+     * @return self
      */
     protected function setLocale($locale)
     {
@@ -142,6 +143,19 @@ abstract class Table implements TableContract
         return $this;
     }
 
+    /**
+     * Get translator instance.
+     *
+     * @return Translator
+     */
+    protected static function trans()
+    {
+        /** @var Translator $translator */
+        $translator = trans();
+
+        return $translator;
+    }
+
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
      | ------------------------------------------------------------------------------------------------
@@ -196,10 +210,7 @@ abstract class Table implements TableContract
      */
     protected function translate($key)
     {
-        /** @var \Illuminate\Translation\Translator $translator */
-        $translator = trans();
-
-        return $translator->get('log-viewer::' . $key,  [], $this->locale);
+        return self::trans()->get('log-viewer::' . $key,  [], $this->locale);
     }
 
     /**

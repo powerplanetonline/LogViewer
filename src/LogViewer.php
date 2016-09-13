@@ -1,9 +1,9 @@
 <?php namespace Arcanedev\LogViewer;
 
-use Arcanedev\LogViewer\Contracts\Utilities\Filesystem as FilesystemContract;
-use Arcanedev\LogViewer\Contracts\Utilities\Factory as FactoryContract;
-use Arcanedev\LogViewer\Contracts\Utilities\LogLevels as LogLevelsContract;
-use Arcanedev\LogViewer\Contracts\LogViewer as LogViewerContract;
+use Arcanedev\LogViewer\Contracts\FactoryInterface;
+use Arcanedev\LogViewer\Contracts\FilesystemInterface;
+use Arcanedev\LogViewer\Contracts\LogLevelsInterface;
+use Arcanedev\LogViewer\Contracts\LogViewerInterface;
 
 /**
  * Class     LogViewer
@@ -11,7 +11,7 @@ use Arcanedev\LogViewer\Contracts\LogViewer as LogViewerContract;
  * @package  Arcanedev\LogViewer
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class LogViewer implements LogViewerContract
+class LogViewer implements LogViewerInterface
 {
     /* ------------------------------------------------------------------------------------------------
      |  Constants
@@ -20,7 +20,7 @@ class LogViewer implements LogViewerContract
     /**
      * LogViewer Version
      */
-    const VERSION = '4.0.0';
+    const VERSION = '3.9.0';
 
     /* ------------------------------------------------------------------------------------------------
      |  Properties
@@ -29,21 +29,21 @@ class LogViewer implements LogViewerContract
     /**
      * The factory instance.
      *
-     * @var \Arcanedev\LogViewer\Contracts\Utilities\Factory
+     * @var FactoryInterface
      */
     protected $factory;
 
     /**
      * The filesystem instance.
      *
-     * @var \Arcanedev\LogViewer\Contracts\Utilities\Filesystem
+     * @var FilesystemInterface
      */
     protected $filesystem;
 
     /**
      * The log levels instance.
      *
-     * @var \Arcanedev\LogViewer\Contracts\Utilities\LogLevels
+     * @var LogLevelsInterface
      */
     protected $levels;
 
@@ -54,14 +54,14 @@ class LogViewer implements LogViewerContract
     /**
      * Create a new instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\Factory     $factory
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\Filesystem  $filesystem
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\LogLevels   $levels
+     * @param  FactoryInterface     $factory
+     * @param  FilesystemInterface  $filesystem
+     * @param  LogLevelsInterface   $levels
      */
     public function __construct(
-        FactoryContract    $factory,
-        FilesystemContract $filesystem,
-        LogLevelsContract  $levels
+        FactoryInterface    $factory,
+        FilesystemInterface $filesystem,
+        LogLevelsInterface  $levels
     ) {
         $this->factory    = $factory;
         $this->filesystem = $filesystem;
@@ -75,7 +75,7 @@ class LogViewer implements LogViewerContract
     /**
      * Get the log levels.
      *
-     * @param  bool  $flip
+     * @param  bool|false  $flip
      *
      * @return array
      */
@@ -127,12 +127,12 @@ class LogViewer implements LogViewerContract
      * @param  string  $prefix
      * @param  string  $extension
      *
-     * @return \Arcanedev\LogViewer\LogViewer
+     * @return self
      */
     public function setPattern(
-        $prefix    = FilesystemContract::PATTERN_PREFIX,
-        $date      = FilesystemContract::PATTERN_DATE,
-        $extension = FilesystemContract::PATTERN_EXTENSION
+        $prefix    = FilesystemInterface::PATTERN_PREFIX,
+        $date      = FilesystemInterface::PATTERN_DATE,
+        $extension = FilesystemInterface::PATTERN_EXTENSION
     ) {
         $this->factory->setPattern($prefix, $date, $extension);
 
@@ -146,7 +146,7 @@ class LogViewer implements LogViewerContract
     /**
      * Get all logs.
      *
-     * @return \Arcanedev\LogViewer\Entities\LogCollection
+     * @return Entities\LogCollection
      */
     public function all()
     {
@@ -170,7 +170,7 @@ class LogViewer implements LogViewerContract
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return Entities\Log
      */
     public function get($date)
     {
@@ -183,7 +183,7 @@ class LogViewer implements LogViewerContract
      * @param  string  $date
      * @param  string  $level
      *
-     * @return \Arcanedev\LogViewer\Entities\LogEntryCollection
+     * @return Entities\LogEntryCollection
      */
     public function entries($date, $level = 'all')
     {
@@ -225,7 +225,7 @@ class LogViewer implements LogViewerContract
      *
      * @param  string|null  $locale
      *
-     * @return \Arcanedev\LogViewer\Tables\StatsTable
+     * @return Tables\StatsTable
      */
     public function statsTable($locale = null)
     {
@@ -238,6 +238,8 @@ class LogViewer implements LogViewerContract
      * @param  string  $date
      *
      * @return bool
+     *
+     * @throws Exceptions\FilesystemException
      */
     public function delete($date)
     {
@@ -289,7 +291,7 @@ class LogViewer implements LogViewerContract
     /**
      * Get logs tree.
      *
-     * @param  bool  $trans
+     * @param  bool|false  $trans
      *
      * @return array
      */
@@ -301,7 +303,7 @@ class LogViewer implements LogViewerContract
     /**
      * Get logs menu.
      *
-     * @param  bool  $trans
+     * @param  bool|true  $trans
      *
      * @return array
      */

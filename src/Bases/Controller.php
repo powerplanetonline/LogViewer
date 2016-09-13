@@ -1,5 +1,6 @@
 <?php namespace Arcanedev\LogViewer\Bases;
 
+use Arcanedev\LogViewer\LogViewer;
 use Illuminate\Routing\Controller as IlluminateController;
 
 /**
@@ -17,7 +18,7 @@ abstract class Controller extends IlluminateController
     /**
      * The log viewer instance
      *
-     * @var \Arcanedev\LogViewer\Contracts\LogViewer
+     * @var LogViewer
      */
     protected $logViewer;
 

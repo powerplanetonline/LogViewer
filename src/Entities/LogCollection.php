@@ -1,7 +1,7 @@
 <?php namespace Arcanedev\LogViewer\Entities;
 
-use Arcanedev\LogViewer\Contracts\Utilities\Filesystem as FilesystemContract;
-use Arcanedev\LogViewer\Exceptions\LogNotFoundException;
+use Arcanedev\LogViewer\Contracts\FilesystemInterface;
+use Arcanedev\LogViewer\Exceptions\LogNotFound;
 use Arcanedev\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -17,7 +17,9 @@ class LogCollection extends Collection
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /** @var \Arcanedev\LogViewer\Contracts\Utilities\Filesystem */
+    /**
+     * @var FilesystemInterface
+     */
     private $filesystem;
 
     /* ------------------------------------------------------------------------------------------------
@@ -25,7 +27,7 @@ class LogCollection extends Collection
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * LogCollection constructor.
+     * Constructor
      *
      * @param  array  $items
      */
@@ -35,7 +37,9 @@ class LogCollection extends Collection
 
         parent::__construct($items);
 
-        if (empty($items)) $this->load();
+        if (empty($items)) {
+            $this->load();
+        }
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -45,11 +49,11 @@ class LogCollection extends Collection
     /**
      * Set the filesystem instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\Filesystem  $filesystem
+     * @param  FilesystemInterface  $filesystem
      *
-     * @return \Arcanedev\LogViewer\Entities\LogCollection
+     * @return self
      */
-    public function setFilesystem(FilesystemContract $filesystem)
+    public function setFilesystem(FilesystemInterface $filesystem)
     {
         $this->filesystem = $filesystem;
 
@@ -63,7 +67,7 @@ class LogCollection extends Collection
     /**
      * Load all logs.
      *
-     * @return \Arcanedev\LogViewer\Entities\LogCollection
+     * @return self
      */
     private function load()
     {
@@ -79,17 +83,20 @@ class LogCollection extends Collection
     /**
      * Get a log.
      *
-     * @param  string      $date
-     * @param  mixed|null  $default
+     * @param  string     $date
+     * @param  mixed|null $default
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return Log
      *
-     * @throws \Arcanedev\LogViewer\Exceptions\LogNotFoundException
+     * @throws LogNotFound
      */
     public function get($date, $default = null)
     {
-        if ( ! $this->has($date))
-            throw new LogNotFoundException("Log not found in this date [$date]");
+        if ( ! $this->has($date)) {
+            throw new LogNotFound(
+                'Log not found in this date [' .$date . ']'
+            );
+        }
 
         return parent::get($date, $default);
     }
@@ -99,30 +106,28 @@ class LogCollection extends Collection
      *
      * @param  int  $perPage
      *
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return LengthAwarePaginator
      */
     public function paginate($perPage = 30)
     {
-        $request     = request();
-        $currentPage = $request->input('page', 1);
-        $paginator   = new LengthAwarePaginator(
-            $this->slice(($currentPage * $perPage) - $perPage, $perPage),
-            $this->count(),
-            $perPage,
-            $currentPage
-        );
+        $page      = request()->input('page', 1);
+        $items     = $this->slice(($page * $perPage) - $perPage, $perPage, true);
+        $paginator = new LengthAwarePaginator($items, $this->count(), $perPage, $page);
 
-        return $paginator->setPath($request->url());
+        $paginator->setPath(request()->url());
+
+        return $paginator;
     }
 
     /**
-     * Get a log (alias).
-     *
-     * @see get()
+     * Get a log. (alias)
+     * @see LogCollection::get()
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return Log
+     *
+     * @throws LogNotFound
      */
     public function log($date)
     {
@@ -136,7 +141,7 @@ class LogCollection extends Collection
      * @param  string  $date
      * @param  string  $level
      *
-     * @return \Arcanedev\LogViewer\Entities\LogEntryCollection
+     * @return LogEntryCollection|null
      */
     public function entries($date, $level = 'all')
     {
@@ -144,7 +149,7 @@ class LogCollection extends Collection
     }
 
     /**
-     * Get logs statistics.
+     * Get logs statistics
      *
      * @return array
      */
@@ -153,7 +158,7 @@ class LogCollection extends Collection
         $stats = [];
 
         foreach ($this->items as $date => $log) {
-            /** @var \Arcanedev\LogViewer\Entities\Log $log */
+            /** @var Log $log */
             $stats[$date] = $log->stats();
         }
 
@@ -187,7 +192,7 @@ class LogCollection extends Collection
     /**
      * Get logs tree.
      *
-     * @param  bool  $trans
+     * @param  bool|false  $trans
      *
      * @return array
      */
@@ -196,7 +201,7 @@ class LogCollection extends Collection
         $tree = [];
 
         foreach ($this->items as $date => $log) {
-            /** @var \Arcanedev\LogViewer\Entities\Log $log */
+            /** @var Log $log */
             $tree[$date] = $log->tree($trans);
         }
 
@@ -206,7 +211,7 @@ class LogCollection extends Collection
     /**
      * Get logs menu.
      *
-     * @param  bool  $trans
+     * @param  bool|true  $trans
      *
      * @return array
      */
@@ -215,7 +220,7 @@ class LogCollection extends Collection
         $menu = [];
 
         foreach ($this->items as $date => $log) {
-            /** @var \Arcanedev\LogViewer\Entities\Log $log */
+            /** @var Log $log */
             $menu[$date] = $log->menu($trans);
         }
 

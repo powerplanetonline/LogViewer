@@ -1,7 +1,7 @@
 <?php namespace Arcanedev\LogViewer\Providers;
 
-use Arcanedev\LogViewer\Contracts;
-use Arcanedev\LogViewer\Utilities;
+use Arcanedev\LogViewer\Utilities\Filesystem;
+use Arcanedev\LogViewer\Utilities\LogLevels;
 use Arcanedev\Support\ServiceProvider;
 
 /**
@@ -38,17 +38,17 @@ class UtilitiesServiceProvider extends ServiceProvider
     {
         return [
             'arcanedev.log-viewer.levels',
-            Contracts\Utilities\LogLevels::class,
+            'Arcanedev\\LogViewer\\Contracts\\LogLevelsInterface',
             'arcanedev.log-viewer.styler',
-            Contracts\Utilities\LogStyler::class,
+            'Arcanedev\\LogViewer\\Contracts\\LogStylerInterface',
             'arcanedev.log-viewer.menu',
-            Contracts\Utilities\LogMenu::class,
+            'Arcanedev\\LogViewer\\Contracts\\LogMenuInterface',
             'arcanedev.log-viewer.filesystem',
-            Contracts\Utilities\Filesystem::class,
+            'Arcanedev\\LogViewer\\Contracts\\FilesystemInterface',
             'arcanedev.log-viewer.factory',
-            Contracts\Utilities\Factory::class,
+            'Arcanedev\\LogViewer\\Contracts\\FactoryInterface',
             'arcanedev.log-viewer.checker',
-            Contracts\Utilities\LogChecker::class,
+            'Arcanedev\\LogViewer\\Contracts\\LogCheckerInterface',
         ];
     }
 
@@ -69,10 +69,13 @@ class UtilitiesServiceProvider extends ServiceProvider
             $config     = $app['config'];
             $translator = $app['translator'];
 
-            return new Utilities\LogLevels($translator, $config->get('log-viewer.locale'));
+            return new LogLevels($translator, $config->get('log-viewer.locale'));
         });
 
-        $this->bind(Contracts\Utilities\LogLevels::class, 'arcanedev.log-viewer.levels');
+        $this->bind(
+            'Arcanedev\\LogViewer\\Contracts\\LogLevelsInterface',
+            'arcanedev.log-viewer.levels'
+        );
     }
 
     /**
@@ -80,9 +83,15 @@ class UtilitiesServiceProvider extends ServiceProvider
      */
     private function registerStyler()
     {
-        $this->singleton('arcanedev.log-viewer.styler', Utilities\LogStyler::class);
+        $this->singleton(
+            'arcanedev.log-viewer.styler',
+            'Arcanedev\\LogViewer\\Utilities\\LogStyler'
+        );
 
-        $this->bind(Contracts\Utilities\LogStyler::class, 'arcanedev.log-viewer.styler');
+        $this->bind(
+            'Arcanedev\\LogViewer\\Contracts\\LogStylerInterface',
+            'arcanedev.log-viewer.styler'
+        );
     }
 
     /**
@@ -90,8 +99,15 @@ class UtilitiesServiceProvider extends ServiceProvider
      */
     private function registerLogMenu()
     {
-        $this->singleton('arcanedev.log-viewer.menu', Utilities\LogMenu::class);
-        $this->bind(Contracts\Utilities\LogMenu::class, 'arcanedev.log-viewer.menu');
+        $this->singleton(
+            'arcanedev.log-viewer.menu',
+            'Arcanedev\\LogViewer\\Utilities\\LogMenu'
+        );
+
+        $this->bind(
+            'Arcanedev\\LogViewer\\Contracts\\LogMenuInterface',
+            'arcanedev.log-viewer.menu'
+        );
     }
 
     /**
@@ -106,18 +122,21 @@ class UtilitiesServiceProvider extends ServiceProvider
              */
             $config     = $app['config'];
             $files      = $app['files'];
-            $filesystem = new Utilities\Filesystem($files, $config->get('log-viewer.storage-path'));
+            $filesystem = new Filesystem($files, $config->get('log-viewer.storage-path'));
 
             $filesystem->setPattern(
-                $config->get('log-viewer.pattern.prefix',    Utilities\Filesystem::PATTERN_PREFIX),
-                $config->get('log-viewer.pattern.date',      Utilities\Filesystem::PATTERN_DATE),
-                $config->get('log-viewer.pattern.extension', Utilities\Filesystem::PATTERN_EXTENSION)
+                $config->get('log-viewer.pattern.prefix',    Filesystem::PATTERN_PREFIX),
+                $config->get('log-viewer.pattern.date',      Filesystem::PATTERN_DATE),
+                $config->get('log-viewer.pattern.extension', Filesystem::PATTERN_EXTENSION)
             );
 
             return $filesystem;
         });
 
-        $this->bind(Contracts\Utilities\Filesystem::class, 'arcanedev.log-viewer.filesystem');
+        $this->bind(
+            'Arcanedev\\LogViewer\\Contracts\\FilesystemInterface',
+            'arcanedev.log-viewer.filesystem'
+        );
     }
 
     /**
@@ -125,9 +144,15 @@ class UtilitiesServiceProvider extends ServiceProvider
      */
     private function registerFactory()
     {
-        $this->singleton('arcanedev.log-viewer.factory', Utilities\Factory::class);
+        $this->singleton(
+            'arcanedev.log-viewer.factory',
+            'Arcanedev\\LogViewer\\Utilities\\Factory'
+        );
 
-        $this->bind(Contracts\Utilities\Factory::class, 'arcanedev.log-viewer.factory');
+        $this->bind(
+            'Arcanedev\\LogViewer\\Contracts\\FactoryInterface',
+            'arcanedev.log-viewer.factory'
+        );
     }
 
     /**
@@ -135,8 +160,14 @@ class UtilitiesServiceProvider extends ServiceProvider
      */
     private function registerChecker()
     {
-        $this->singleton('arcanedev.log-viewer.checker', Utilities\LogChecker::class);
+        $this->singleton(
+            'arcanedev.log-viewer.checker',
+            'Arcanedev\LogViewer\Utilities\LogChecker'
+        );
 
-        $this->bind(Contracts\Utilities\LogChecker::class, 'arcanedev.log-viewer.checker');
+        $this->bind(
+            'Arcanedev\\LogViewer\\Contracts\\LogCheckerInterface',
+            'arcanedev.log-viewer.checker'
+        );
     }
 }

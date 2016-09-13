@@ -1,8 +1,8 @@
 <?php namespace Arcanedev\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\Utilities\Filesystem as FilesystemContract;
-use Arcanedev\LogViewer\Contracts\Utilities\LogChecker as LogCheckerContract;
-use Illuminate\Contracts\Config\Repository as ConfigContract;
+use Arcanedev\LogViewer\Contracts\FilesystemInterface;
+use Arcanedev\LogViewer\Contracts\LogCheckerInterface;
+use Illuminate\Contracts\Config\Repository as Config;
 
 /**
  * Class     LogChecker
@@ -12,8 +12,21 @@ use Illuminate\Contracts\Config\Repository as ConfigContract;
  *
  * @todo     Adding the translation or not ??
  */
-class LogChecker implements LogCheckerContract
+class LogChecker implements LogCheckerInterface
 {
+    /* ------------------------------------------------------------------------------------------------
+     |  Constants
+     | ------------------------------------------------------------------------------------------------
+     */
+    /**
+     * @link http://laravel.com/docs/5.1/errors#configuration
+     * @link https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md#log-to-files-and-syslog
+     */
+    const HANDLER_DAILY    = 'daily';
+    const HANDLER_SINGLE   = 'single';
+    const HANDLER_SYSLOG   = 'syslog';
+    const HANDLER_ERRORLOG = 'errorlog';
+
     /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
@@ -28,7 +41,7 @@ class LogChecker implements LogCheckerContract
     /**
      * The filesystem instance.
      *
-     * @var \Arcanedev\LogViewer\Contracts\Utilities\Filesystem
+     * @var \Arcanedev\LogViewer\Contracts\FilesystemInterface
      */
     private $filesystem;
 
@@ -54,7 +67,7 @@ class LogChecker implements LogCheckerContract
     private $messages;
 
     /**
-     * Log files statuses.
+     * Log files status (or statuses... i don't know).
      *
      * @var array
      */
@@ -65,16 +78,17 @@ class LogChecker implements LogCheckerContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * LogChecker constructor.
+     * Make LogChecker instance.
      *
-     * @param  \Illuminate\Contracts\Config\Repository    $config
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\Filesystem  $filesystem
+     * @param  \Illuminate\Contracts\Config\Repository             $config
+     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
      */
-    public function __construct(ConfigContract $config, FilesystemContract $filesystem)
+    public function __construct(Config $config, FilesystemInterface $filesystem)
     {
-        $this->files = [];
         $this->setConfig($config);
         $this->setFilesystem($filesystem);
+        $this->files      = [];
+
         $this->refresh();
     }
 
@@ -87,9 +101,9 @@ class LogChecker implements LogCheckerContract
      *
      * @param  \Illuminate\Contracts\Config\Repository  $config
      *
-     * @return \Arcanedev\LogViewer\Utilities\LogChecker
+     * @return self
      */
-    public function setConfig(ConfigContract $config)
+    public function setConfig(Config $config)
     {
         $this->config = $config;
 
@@ -99,11 +113,11 @@ class LogChecker implements LogCheckerContract
     /**
      * Set the Filesystem instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Utilities\Filesystem  $filesystem
+     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
      *
-     * @return \Arcanedev\LogViewer\Utilities\LogChecker
+     * @return self
      */
-    public function setFilesystem(FilesystemContract $filesystem)
+    public function setFilesystem(FilesystemInterface $filesystem)
     {
         $this->filesystem = $filesystem;
 
@@ -115,7 +129,7 @@ class LogChecker implements LogCheckerContract
      *
      * @param  string  $handler
      *
-     * @return \Arcanedev\LogViewer\Utilities\LogChecker
+     * @return self
      */
     protected function setHandler($handler)
     {
@@ -171,14 +185,18 @@ class LogChecker implements LogCheckerContract
     {
         $this->refresh();
 
-        return $this->isDaily() ? [
-            'status' => 'success',
-            'header' => 'Application requirements fulfilled.',
-            'message' => 'Are you ready to rock ?',
-        ] : [
-            'status' => 'failed',
-            'header' => 'Application requirements failed.',
-            'message' => $this->messages['handler']
+        if ($this->isDaily()) {
+            return [
+                'status'    => 'success',
+                'header'    => 'Application requirements fulfilled.',
+                'message'   => 'Are you ready to rock ?',
+            ];
+        }
+
+        return [
+            'status'    => 'failed',
+            'header'    => 'Application requirements failed.',
+            'message'   => $this->messages['handler']
         ];
     }
 
@@ -215,17 +233,17 @@ class LogChecker implements LogCheckerContract
     /**
      * Refresh the checks.
      *
-     * @return \Arcanedev\LogViewer\Utilities\LogChecker
+     * @return self
      */
     private function refresh()
     {
         $this->setHandler($this->config->get('app.log', 'single'));
 
-        $this->messages = [
-            'handler' => '',
-            'files'   => [],
+        $this->messages   = [
+            'handler'   => '',
+            'files'     => [],
         ];
-        $this->files    = [];
+        $this->files      = [];
 
         $this->checkHandler();
         $this->checkLogFiles();
@@ -234,17 +252,24 @@ class LogChecker implements LogCheckerContract
     }
 
     /**
-     * Check the handler mode.
+     * Check the handler mode
      */
     private function checkHandler()
     {
-        if ($this->isDaily()) return;
+        if ($this->isDaily()) {
+            return;
+        }
 
-        $this->messages['handler'] = 'You should set the log handler to `daily` mode. Please check the LogViwer wiki page (Requirements) for more details.';
+        $this->messages['handler'] = implode(' ', [
+            'You should set the log handler to `daily` mode.',
+            'Please check the LogViwer wiki page (Requirements) for more details.'
+        ]);
     }
 
     /**
      * Check all log files.
+     *
+     * @return array
      */
     private function checkLogFiles()
     {
@@ -275,6 +300,7 @@ class LogChecker implements LogCheckerContract
                 "The log file [$file] has an invalid date, the format must be like laravel-YYYY-MM-DD.log.";
         }
 
+
         $this->files[$file] = compact('filename', 'status', 'message', 'path');
     }
 
@@ -301,7 +327,9 @@ class LogChecker implements LogCheckerContract
     {
         $pattern = '/laravel-(\d){4}-(\d){2}-(\d){2}.log/';
 
-        if ((bool) preg_match($pattern, $file, $matches) === false) return true;
+        if ((bool) preg_match($pattern, $file, $matches) === false) {
+            return true;
+        }
 
         return false;
     }
