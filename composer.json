@@ -1,7 +1,7 @@
 {
     "name":        "powerplanetonline/log-viewer",
     "description": "Provides a Log Viewer for Laravel 5",
-    "keywords":    ["arcanedev", "arcanesoft", "laravel", "log", "log viewer", "log-viewer", "logviewer"],
+    "keywords":    ["powerplanetonline", "arcanesoft", "laravel", "log", "log viewer", "log-viewer", "logviewer"],
     "homepage":    "https://github.com/powerplanetonline/LogViewer",
     "authors": [
         {
