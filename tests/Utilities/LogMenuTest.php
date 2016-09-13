@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Utilities;
 
-use Arcanedev\LogViewer\Tests\TestCase;
-use Arcanedev\LogViewer\Utilities\LogMenu;
+use Powerplanetonline\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Utilities\LogMenu;
 
 /**
  * Class     LogMenuTest
  *
- * @package  Arcanedev\LogViewer\Tests\Utilities
+ * @package  Powerplanetonline\LogViewer\Tests\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogMenuTest extends TestCase
@@ -44,7 +44,7 @@ class LogMenuTest extends TestCase
     public function it_can_be_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Utilities\\LogMenu',
+            'Powerplanetonline\\LogViewer\\Utilities\\LogMenu',
             $this->menu
         );
     }

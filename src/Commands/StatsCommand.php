@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Commands;
+<?php namespace Powerplanetonline\LogViewer\Commands;
 
-use Arcanedev\LogViewer\Bases\Command;
-use Arcanedev\LogViewer\Tables\StatsTable;
+use Powerplanetonline\LogViewer\Bases\Command;
+use Powerplanetonline\LogViewer\Tables\StatsTable;
 
 /**
  * Class     StatsCommand
  *
- * @package  Arcanedev\LogViewer\Commands
+ * @package  Powerplanetonline\LogViewer\Commands
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class StatsCommand extends Command

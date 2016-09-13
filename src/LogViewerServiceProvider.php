@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer;
+<?php namespace Powerplanetonline\LogViewer;
 
 use Arcanedev\Support\PackageServiceProvider as ServiceProvider;
 
 /**
  * Class     LogViewerServiceProvider
  *
- * @package  Arcanedev\LogViewer
+ * @package  Powerplanetonline\LogViewer
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogViewerServiceProvider extends ServiceProvider
@@ -19,7 +19,7 @@ class LogViewerServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $vendor  = 'arcanedev';
+    protected $vendor  = 'powerplanetonline';
 
     /**
      * Package name.
@@ -53,12 +53,12 @@ class LogViewerServiceProvider extends ServiceProvider
     {
         $this->registerConfig();
 
-        $this->app->register('Arcanedev\\LogViewer\\Providers\\UtilitiesServiceProvider');
+        $this->app->register('Powerplanetonline\\LogViewer\\Providers\\UtilitiesServiceProvider');
         $this->registerLogViewer();
         $this->registerAliases();
 
         if ($this->app->runningInConsole()) {
-            $this->app->register('Arcanedev\\LogViewer\\Providers\\CommandsServiceProvider');
+            $this->app->register('Powerplanetonline\\LogViewer\\Providers\\CommandsServiceProvider');
         }
     }
 
@@ -70,7 +70,7 @@ class LogViewerServiceProvider extends ServiceProvider
         $this->publishConfig();
         $this->publishViews();
         $this->publishTranslations();
-        $this->app->register('Arcanedev\\LogViewer\\Providers\\RouteServiceProvider');
+        $this->app->register('Powerplanetonline\\LogViewer\\Providers\\RouteServiceProvider');
     }
 
     /**
@@ -82,7 +82,7 @@ class LogViewerServiceProvider extends ServiceProvider
     {
         return [
             'arcanedev.log-viewer',
-            'Arcanedev\\LogViewer\\Contracts\\LogViewerInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogViewerInterface',
         ];
     }
 
@@ -97,18 +97,18 @@ class LogViewerServiceProvider extends ServiceProvider
     {
         $this->singleton(
             'arcanedev.log-viewer',
-            'Arcanedev\\LogViewer\\LogViewer'
+            'Powerplanetonline\\LogViewer\\LogViewer'
         );
 
         $this->bind(
-            'Arcanedev\\LogViewer\\Contracts\\LogViewerInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogViewerInterface',
             'arcanedev.log-viewer'
         );
 
         // Registering the Facade
         $this->alias(
             $this->app['config']->get('log-viewer.facade', 'LogViewer'),
-            'Arcanedev\\LogViewer\\Facades\\LogViewer'
+            'Powerplanetonline\\LogViewer\\Facades\\LogViewer'
         );
     }
 }

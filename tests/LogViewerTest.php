@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests;
+<?php namespace Powerplanetonline\LogViewer\Tests;
 
-use Arcanedev\LogViewer\Entities\Log;
-use Arcanedev\LogViewer\LogViewer;
+use Powerplanetonline\LogViewer\Entities\Log;
+use Powerplanetonline\LogViewer\LogViewer;
 
 /**
  * Class     LogViewerTest
  *
- * @package  Arcanedev\LogViewer\Tests
+ * @package  Powerplanetonline\LogViewer\Tests
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogViewerTest extends TestCase
@@ -15,7 +15,7 @@ class LogViewerTest extends TestCase
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /** @var \Arcanedev\LogViewer\LogViewer */
+    /** @var \Powerplanetonline\LogViewer\LogViewer */
     private $logViewer;
 
     /* ------------------------------------------------------------------------------------------------

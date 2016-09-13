@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Commands;
+<?php namespace Powerplanetonline\LogViewer\Commands;
 
-use Arcanedev\LogViewer\Bases\Command;
-use Arcanedev\LogViewer\Utilities\LogChecker;
+use Powerplanetonline\LogViewer\Bases\Command;
+use Powerplanetonline\LogViewer\Utilities\LogChecker;
 
 /**
  * Class     PublishCommand
  *
- * @package  Arcanedev\LogViewer\Commands
+ * @package  Powerplanetonline\LogViewer\Commands
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class CheckCommand extends Command

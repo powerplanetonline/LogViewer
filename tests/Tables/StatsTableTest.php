@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Tables;
+<?php namespace Powerplanetonline\LogViewer\Tests\Tables;
 
-use Arcanedev\LogViewer\Tests\TestCase;
-use Arcanedev\LogViewer\Tables\StatsTable;
+use Powerplanetonline\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Tables\StatsTable;
 
 /**
  * Class     StatsTableTest
  *
- * @package  Arcanedev\LogViewer\Tests\Tables
+ * @package  Powerplanetonline\LogViewer\Tests\Tables
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class StatsTableTest extends TestCase
@@ -51,7 +51,7 @@ class StatsTableTest extends TestCase
     public function it_can_be_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Tables\\StatsTable',
+            'Powerplanetonline\\LogViewer\\Tables\\StatsTable',
             $this->table
         );
     }

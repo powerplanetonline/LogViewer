@@ -1,13 +1,13 @@
-<?php namespace Arcanedev\LogViewer\Bases;
+<?php namespace Powerplanetonline\LogViewer\Bases;
 
-use Arcanedev\LogViewer\Contracts\LogLevelsInterface;
-use Arcanedev\LogViewer\Contracts\TableInterface;
+use Powerplanetonline\LogViewer\Contracts\LogLevelsInterface;
+use Powerplanetonline\LogViewer\Contracts\TableInterface;
 use Illuminate\Translation\Translator;
 
 /**
  * Class     Table
  *
- * @package  Arcanedev\LogViewer\Bases
+ * @package  Powerplanetonline\LogViewer\Bases
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 abstract class Table implements TableInterface

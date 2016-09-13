@@ -1,13 +1,13 @@
-<?php namespace Arcanedev\LogViewer\Providers;
+<?php namespace Powerplanetonline\LogViewer\Providers;
 
-use Arcanedev\LogViewer\Http\Routes\LogViewerRoute;
+use Powerplanetonline\LogViewer\Http\Routes\LogViewerRoute;
 use Arcanedev\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Contracts\Routing\Registrar as Router;
 
 /**
  * Class     RouteServiceProvider
  *
- * @package  Arcanedev\LogViewer\Providers
+ * @package  Powerplanetonline\LogViewer\Providers
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class RouteServiceProvider extends ServiceProvider
@@ -24,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider
     public function routeAttributes()
     {
         return array_merge($this->config('attributes', []), [
-            'namespace' => 'Arcanedev\\LogViewer\\Http\\Controllers',
+            'namespace' => 'Powerplanetonline\\LogViewer\\Http\\Controllers',
         ]);
     }
 

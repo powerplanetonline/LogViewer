@@ -1,14 +1,14 @@
-<?php namespace Arcanedev\LogViewer;
+<?php namespace Powerplanetonline\LogViewer;
 
-use Arcanedev\LogViewer\Contracts\FactoryInterface;
-use Arcanedev\LogViewer\Contracts\FilesystemInterface;
-use Arcanedev\LogViewer\Contracts\LogLevelsInterface;
-use Arcanedev\LogViewer\Contracts\LogViewerInterface;
+use Powerplanetonline\LogViewer\Contracts\FactoryInterface;
+use Powerplanetonline\LogViewer\Contracts\FilesystemInterface;
+use Powerplanetonline\LogViewer\Contracts\LogLevelsInterface;
+use Powerplanetonline\LogViewer\Contracts\LogViewerInterface;
 
 /**
  * Class     LogViewer
  *
- * @package  Arcanedev\LogViewer
+ * @package  Powerplanetonline\LogViewer
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogViewer implements LogViewerInterface
@@ -101,7 +101,7 @@ class LogViewer implements LogViewerInterface
      *
      * @param  string  $path
      *
-     * @return \Arcanedev\LogViewer\LogViewer
+     * @return \Powerplanetonline\LogViewer\LogViewer
      */
     public function setPath($path)
     {

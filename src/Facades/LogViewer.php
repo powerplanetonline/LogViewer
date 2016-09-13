@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Facades;
+<?php namespace Powerplanetonline\LogViewer\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class     LogViewer
  *
- * @package  Arcanedev\LogViewer\Facades
+ * @package  Powerplanetonline\LogViewer\Facades
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogViewer extends Facade

@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Contracts\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Contracts\Utilities;
 
 use Illuminate\Translation\Translator;
 
 /**
  * Interface  LogLevels
  *
- * @package   Arcanedev\LogViewer\Contracts\Utilities
+ * @package   Powerplanetonline\LogViewer\Contracts\Utilities
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface LogLevels

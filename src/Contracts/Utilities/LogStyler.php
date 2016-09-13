@@ -1,9 +1,9 @@
-<?php namespace Arcanedev\LogViewer\Contracts\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Contracts\Utilities;
 
 /**
  * Interface  LogStyler
  *
- * @package   Arcanedev\LogViewer\Contracts\Utilities
+ * @package   Powerplanetonline\LogViewer\Contracts\Utilities
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface LogStyler

@@ -1,15 +1,15 @@
-<?php namespace Arcanedev\LogViewer\Contracts;
+<?php namespace Powerplanetonline\LogViewer\Contracts;
 
-use Arcanedev\LogViewer\Entities\LogEntryCollection;
-use Arcanedev\LogViewer\Entities\Log;
-use Arcanedev\LogViewer\Entities\LogCollection;
-use Arcanedev\LogViewer\Exceptions\FilesystemException;
-use Arcanedev\LogViewer\Tables\StatsTable;
+use Powerplanetonline\LogViewer\Entities\LogEntryCollection;
+use Powerplanetonline\LogViewer\Entities\Log;
+use Powerplanetonline\LogViewer\Entities\LogCollection;
+use Powerplanetonline\LogViewer\Exceptions\FilesystemException;
+use Powerplanetonline\LogViewer\Tables\StatsTable;
 
 /**
  * Interface  LogViewer
  *
- * @package   Arcanedev\LogViewer\Contracts
+ * @package   Powerplanetonline\LogViewer\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface LogViewer extends Patternable
@@ -41,7 +41,7 @@ interface LogViewer extends Patternable
      *
      * @param  string  $path
      *
-     * @return \Arcanedev\LogViewer\LogViewer
+     * @return \Powerplanetonline\LogViewer\LogViewer
      */
     public function setPath($path);
 

@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Entities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Entities;
 
-use Arcanedev\LogViewer\Entities\Log;
-use Arcanedev\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Entities\Log;
+use Powerplanetonline\LogViewer\Tests\TestCase;
 
 /**
  * Class     LogTest
  *
- * @package  Arcanedev\LogViewer\Tests\Entities
+ * @package  Powerplanetonline\LogViewer\Tests\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogTest extends TestCase
@@ -45,7 +45,7 @@ class LogTest extends TestCase
     {
         $entries = $this->log->entries();
 
-        $this->assertInstanceOf('Arcanedev\\LogViewer\\Entities\\Log', $this->log);
+        $this->assertInstanceOf('Powerplanetonline\\LogViewer\\Entities\\Log', $this->log);
         $this->assertDate($this->log->date);
         $this->assertCount(8, $entries);
         $this->assertLogEntries($this->log->date, $entries);

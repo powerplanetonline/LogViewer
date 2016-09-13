@@ -1,8 +1,8 @@
-<?php namespace Arcanedev\LogViewer\Http\Controllers;
+<?php namespace Powerplanetonline\LogViewer\Http\Controllers;
 
-use Arcanedev\LogViewer\Bases\Controller;
-use Arcanedev\LogViewer\Entities\Log;
-use Arcanedev\LogViewer\Exceptions\LogNotFound;
+use Powerplanetonline\LogViewer\Bases\Controller;
+use Powerplanetonline\LogViewer\Entities\Log;
+use Powerplanetonline\LogViewer\Exceptions\LogNotFound;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**

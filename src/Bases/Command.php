@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Bases;
+<?php namespace Powerplanetonline\LogViewer\Bases;
 
-use Arcanedev\LogViewer\Contracts\LogViewerInterface;
+use Powerplanetonline\LogViewer\Contracts\LogViewerInterface;
 use Arcanedev\Support\Bases\Command as BaseCommand;
 
 /**
  * Class     Command
  *
- * @package  Arcanedev\LogViewer\Bases
+ * @package  Powerplanetonline\LogViewer\Bases
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 abstract class Command extends BaseCommand
@@ -53,7 +53,7 @@ abstract class Command extends BaseCommand
         $this->line('');
 
         // Copyright
-        $this->comment('Version ' . $this->logViewer->version() . ' - Created by ARCANEDEV' . chr(169));
+        $this->comment('Version ' . $this->logViewer->version() . ' - Created by Powerplanetonline' . chr(169));
         $this->line('');
     }
 }

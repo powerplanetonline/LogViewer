@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Bases;
+<?php namespace Powerplanetonline\LogViewer\Bases;
 
-use Arcanedev\LogViewer\LogViewer;
+use Powerplanetonline\LogViewer\LogViewer;
 use Illuminate\Routing\Controller as IlluminateController;
 
 /**
  * Class     Controller
  *
- * @package  Arcanedev\LogViewer\Bases
+ * @package  Powerplanetonline\LogViewer\Bases
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 abstract class Controller extends IlluminateController

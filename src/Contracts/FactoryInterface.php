@@ -1,9 +1,9 @@
-<?php namespace Arcanedev\LogViewer\Contracts;
+<?php namespace Powerplanetonline\LogViewer\Contracts;
 
 /**
  * Interface  FactoryInterface
  *
- * @package   Arcanedev\LogViewer\Contracts
+ * @package   Powerplanetonline\LogViewer\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface FactoryInterface extends Patternable
@@ -15,14 +15,14 @@ interface FactoryInterface extends Patternable
     /**
      * Get the filesystem instance.
      *
-     * @return \Arcanedev\LogViewer\Contracts\FilesystemInterface
+     * @return \Powerplanetonline\LogViewer\Contracts\FilesystemInterface
      */
     public function getFilesystem();
 
     /**
      * Set the filesystem instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
+     * @param  \Powerplanetonline\LogViewer\Contracts\FilesystemInterface  $filesystem
      *
      * @return self
      */
@@ -31,14 +31,14 @@ interface FactoryInterface extends Patternable
     /**
      * Get the log levels instance.
      *
-     * @return  \Arcanedev\LogViewer\Contracts\LogLevelsInterface  $levels
+     * @return  \Powerplanetonline\LogViewer\Contracts\LogLevelsInterface  $levels
      */
     public function getLevels();
 
     /**
      * Set the log levels instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\LogLevelsInterface  $levels
+     * @param  \Powerplanetonline\LogViewer\Contracts\LogLevelsInterface  $levels
      *
      * @return self
      */
@@ -56,7 +56,7 @@ interface FactoryInterface extends Patternable
     /**
      * Get all logs.
      *
-     * @return \Arcanedev\LogViewer\Entities\LogCollection
+     * @return \Powerplanetonline\LogViewer\Entities\LogCollection
      */
     public function logs();
 
@@ -67,7 +67,7 @@ interface FactoryInterface extends Patternable
     /**
      * Get all logs (alias).
      *
-     * @return \Arcanedev\LogViewer\Entities\LogCollection
+     * @return \Powerplanetonline\LogViewer\Entities\LogCollection
      */
     public function all();
 
@@ -85,7 +85,7 @@ interface FactoryInterface extends Patternable
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return \Powerplanetonline\LogViewer\Entities\Log
      */
     public function log($date);
 
@@ -94,7 +94,7 @@ interface FactoryInterface extends Patternable
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return \Powerplanetonline\LogViewer\Entities\Log
      */
     public function get($date);
 
@@ -104,7 +104,7 @@ interface FactoryInterface extends Patternable
      * @param  string  $date
      * @param  string  $level
      *
-     * @return \Arcanedev\LogViewer\Entities\LogEntryCollection
+     * @return \Powerplanetonline\LogViewer\Entities\LogEntryCollection
      */
     public function entries($date, $level = 'all');
 
@@ -161,7 +161,7 @@ interface FactoryInterface extends Patternable
      *
      * @param  string|null  $locale
      *
-     * @return \Arcanedev\LogViewer\Tables\StatsTable
+     * @return \Powerplanetonline\LogViewer\Tables\StatsTable
      */
     public function statsTable($locale = null);
 

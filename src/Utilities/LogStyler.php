@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\LogStylerInterface;
+use Powerplanetonline\LogViewer\Contracts\LogStylerInterface;
 use Illuminate\Contracts\Config\Repository as Config;
 
 /**
  * Class     LogStyler
  *
- * @package  Arcanedev\LogViewer\Utilities
+ * @package  Powerplanetonline\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogStyler implements LogStylerInterface

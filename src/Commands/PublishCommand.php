@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Commands;
+<?php namespace Powerplanetonline\LogViewer\Commands;
 
-use Arcanedev\LogViewer\Bases\Command;
+use Powerplanetonline\LogViewer\Bases\Command;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class     PublishCommand
  *
- * @package  Arcanedev\LogViewer\Commands
+ * @package  Powerplanetonline\LogViewer\Commands
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class PublishCommand extends Command
@@ -48,7 +48,7 @@ class PublishCommand extends Command
     public function handle()
     {
         $args = [
-            '--provider' => 'Arcanedev\\LogViewer\\LogViewerServiceProvider'
+            '--provider' => 'Powerplanetonline\\LogViewer\\LogViewerServiceProvider'
         ];
 
         if ((bool) $this->option('force')) {

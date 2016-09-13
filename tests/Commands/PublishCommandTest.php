@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Tests\Commands;
+<?php namespace Powerplanetonline\LogViewer\Tests\Commands;
 
-use Arcanedev\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Tests\TestCase;
 
 /**
  * Class     PublishCommandTest
  *
- * @package  Arcanedev\LogViewer\Tests\Commands
+ * @package  Powerplanetonline\LogViewer\Tests\Commands
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class PublishCommandTest extends TestCase
@@ -114,7 +114,7 @@ class PublishCommandTest extends TestCase
 
         $this->assertEmpty(
             $missing = array_diff($locales, self::$locales),
-            'The locales [' . implode(', ', $missing) . '] are missing in the Arcanedev\\LogViewer\\Tests\\TestCase::$locales (line 29) for tests purposes.'
+            'The locales [' . implode(', ', $missing) . '] are missing in the Powerplanetonline\\LogViewer\\Tests\\TestCase::$locales (line 29) for tests purposes.'
         );
 
         foreach ($directories as $directory) {

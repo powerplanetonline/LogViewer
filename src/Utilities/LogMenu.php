@@ -1,14 +1,14 @@
-<?php namespace Arcanedev\LogViewer\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\LogMenuInterface;
-use Arcanedev\LogViewer\Contracts\LogStylerInterface;
-use Arcanedev\LogViewer\Entities\Log;
+use Powerplanetonline\LogViewer\Contracts\LogMenuInterface;
+use Powerplanetonline\LogViewer\Contracts\LogStylerInterface;
+use Powerplanetonline\LogViewer\Entities\Log;
 use Illuminate\Contracts\Config\Repository;
 
 /**
  * Class     LogMenu
  *
- * @package  Arcanedev\LogViewer\Utilities
+ * @package  Powerplanetonline\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogMenu implements LogMenuInterface
@@ -27,7 +27,7 @@ class LogMenu implements LogMenuInterface
     /**
      * The log styler instance.
      *
-     * @var \Arcanedev\LogViewer\Contracts\LogStylerInterface
+     * @var \Powerplanetonline\LogViewer\Contracts\LogStylerInterface
      */
     private $styler;
 
@@ -39,7 +39,7 @@ class LogMenu implements LogMenuInterface
      * Create the LogMenu instance.
      *
      * @param  \Illuminate\Contracts\Config\Repository            $config
-     * @param  \Arcanedev\LogViewer\Contracts\LogStylerInterface  $styler
+     * @param  \Powerplanetonline\LogViewer\Contracts\LogStylerInterface  $styler
      */
     public function __construct(Repository $config, LogStylerInterface $styler)
     {
@@ -68,7 +68,7 @@ class LogMenu implements LogMenuInterface
     /**
      * Set the log styler instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\LogStylerInterface  $styler
+     * @param  \Powerplanetonline\LogViewer\Contracts\LogStylerInterface  $styler
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class LogMenu implements LogMenuInterface
     /**
      * Make log menu.
      *
-     * @param  \Arcanedev\LogViewer\Entities\Log  $log
+     * @param  \Powerplanetonline\LogViewer\Entities\Log  $log
      * @param  bool                               $trans
      *
      * @return array

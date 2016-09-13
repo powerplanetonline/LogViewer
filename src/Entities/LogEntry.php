@@ -1,4 +1,4 @@
-<?php namespace Arcanedev\LogViewer\Entities;
+<?php namespace Powerplanetonline\LogViewer\Entities;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
@@ -8,7 +8,7 @@ use JsonSerializable;
 /**
  * Class     LogEntry
  *
- * @package  Arcanedev\LogViewer\Entities
+ * @package  Powerplanetonline\LogViewer\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogEntry implements Arrayable, Jsonable, JsonSerializable

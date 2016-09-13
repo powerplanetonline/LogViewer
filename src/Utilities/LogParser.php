@@ -1,9 +1,9 @@
-<?php namespace Arcanedev\LogViewer\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Utilities;
 
 /**
  * Class     LogParser
  *
- * @package  Arcanedev\LogViewer\Utilities
+ * @package  Powerplanetonline\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogParser

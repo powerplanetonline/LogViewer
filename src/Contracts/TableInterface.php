@@ -1,9 +1,9 @@
-<?php namespace Arcanedev\LogViewer\Contracts;
+<?php namespace Powerplanetonline\LogViewer\Contracts;
 
 /**
  * Interface  TableInterface
  *
- * @package   Arcanedev\LogViewer\Contracts
+ * @package   Powerplanetonline\LogViewer\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface TableInterface

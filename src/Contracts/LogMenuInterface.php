@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Contracts;
+<?php namespace Powerplanetonline\LogViewer\Contracts;
 
-use Arcanedev\LogViewer\Entities\Log;
+use Powerplanetonline\LogViewer\Entities\Log;
 use Illuminate\Contracts\Config\Repository;
 
 /**
  * Interface  LogMenuInterface
  *
- * @package   Arcanedev\LogViewer\Contracts
+ * @package   Powerplanetonline\LogViewer\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface LogMenuInterface
@@ -27,7 +27,7 @@ interface LogMenuInterface
     /**
      * Set the log styler instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\LogStylerInterface  $styler
+     * @param  \Powerplanetonline\LogViewer\Contracts\LogStylerInterface  $styler
      *
      * @return self
      */
@@ -40,7 +40,7 @@ interface LogMenuInterface
     /**
      * Make log menu.
      *
-     * @param  \Arcanedev\LogViewer\Entities\Log  $log
+     * @param  \Powerplanetonline\LogViewer\Entities\Log  $log
      * @param  bool                               $trans
      *
      * @return array

@@ -1,14 +1,14 @@
-<?php namespace Arcanedev\LogViewer\Entities;
+<?php namespace Powerplanetonline\LogViewer\Entities;
 
-use Arcanedev\LogViewer\Contracts\FilesystemInterface;
-use Arcanedev\LogViewer\Exceptions\LogNotFound;
+use Powerplanetonline\LogViewer\Contracts\FilesystemInterface;
+use Powerplanetonline\LogViewer\Exceptions\LogNotFound;
 use Arcanedev\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class     LogCollection
  *
- * @package  Arcanedev\LogViewer\Entities
+ * @package  Powerplanetonline\LogViewer\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogCollection extends Collection

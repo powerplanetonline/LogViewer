@@ -1,13 +1,13 @@
-<?php namespace Arcanedev\LogViewer\Providers;
+<?php namespace Powerplanetonline\LogViewer\Providers;
 
-use Arcanedev\LogViewer\Utilities\Filesystem;
-use Arcanedev\LogViewer\Utilities\LogLevels;
+use Powerplanetonline\LogViewer\Utilities\Filesystem;
+use Powerplanetonline\LogViewer\Utilities\LogLevels;
 use Arcanedev\Support\ServiceProvider;
 
 /**
  * Class     UtilitiesServiceProvider
  *
- * @package  Arcanedev\LogViewer\Providers
+ * @package  Powerplanetonline\LogViewer\Providers
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class UtilitiesServiceProvider extends ServiceProvider
@@ -38,17 +38,17 @@ class UtilitiesServiceProvider extends ServiceProvider
     {
         return [
             'arcanedev.log-viewer.levels',
-            'Arcanedev\\LogViewer\\Contracts\\LogLevelsInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogLevelsInterface',
             'arcanedev.log-viewer.styler',
-            'Arcanedev\\LogViewer\\Contracts\\LogStylerInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogStylerInterface',
             'arcanedev.log-viewer.menu',
-            'Arcanedev\\LogViewer\\Contracts\\LogMenuInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogMenuInterface',
             'arcanedev.log-viewer.filesystem',
-            'Arcanedev\\LogViewer\\Contracts\\FilesystemInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\FilesystemInterface',
             'arcanedev.log-viewer.factory',
-            'Arcanedev\\LogViewer\\Contracts\\FactoryInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\FactoryInterface',
             'arcanedev.log-viewer.checker',
-            'Arcanedev\\LogViewer\\Contracts\\LogCheckerInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogCheckerInterface',
         ];
     }
 
@@ -73,7 +73,7 @@ class UtilitiesServiceProvider extends ServiceProvider
         });
 
         $this->bind(
-            'Arcanedev\\LogViewer\\Contracts\\LogLevelsInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogLevelsInterface',
             'arcanedev.log-viewer.levels'
         );
     }
@@ -85,11 +85,11 @@ class UtilitiesServiceProvider extends ServiceProvider
     {
         $this->singleton(
             'arcanedev.log-viewer.styler',
-            'Arcanedev\\LogViewer\\Utilities\\LogStyler'
+            'Powerplanetonline\\LogViewer\\Utilities\\LogStyler'
         );
 
         $this->bind(
-            'Arcanedev\\LogViewer\\Contracts\\LogStylerInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogStylerInterface',
             'arcanedev.log-viewer.styler'
         );
     }
@@ -101,11 +101,11 @@ class UtilitiesServiceProvider extends ServiceProvider
     {
         $this->singleton(
             'arcanedev.log-viewer.menu',
-            'Arcanedev\\LogViewer\\Utilities\\LogMenu'
+            'Powerplanetonline\\LogViewer\\Utilities\\LogMenu'
         );
 
         $this->bind(
-            'Arcanedev\\LogViewer\\Contracts\\LogMenuInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogMenuInterface',
             'arcanedev.log-viewer.menu'
         );
     }
@@ -134,7 +134,7 @@ class UtilitiesServiceProvider extends ServiceProvider
         });
 
         $this->bind(
-            'Arcanedev\\LogViewer\\Contracts\\FilesystemInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\FilesystemInterface',
             'arcanedev.log-viewer.filesystem'
         );
     }
@@ -146,11 +146,11 @@ class UtilitiesServiceProvider extends ServiceProvider
     {
         $this->singleton(
             'arcanedev.log-viewer.factory',
-            'Arcanedev\\LogViewer\\Utilities\\Factory'
+            'Powerplanetonline\\LogViewer\\Utilities\\Factory'
         );
 
         $this->bind(
-            'Arcanedev\\LogViewer\\Contracts\\FactoryInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\FactoryInterface',
             'arcanedev.log-viewer.factory'
         );
     }
@@ -162,11 +162,11 @@ class UtilitiesServiceProvider extends ServiceProvider
     {
         $this->singleton(
             'arcanedev.log-viewer.checker',
-            'Arcanedev\LogViewer\Utilities\LogChecker'
+            'Powerplanetonline\LogViewer\Utilities\LogChecker'
         );
 
         $this->bind(
-            'Arcanedev\\LogViewer\\Contracts\\LogCheckerInterface',
+            'Powerplanetonline\\LogViewer\\Contracts\\LogCheckerInterface',
             'arcanedev.log-viewer.checker'
         );
     }

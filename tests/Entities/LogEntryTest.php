@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Entities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Entities;
 
-use Arcanedev\LogViewer\Entities\LogEntry;
-use Arcanedev\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Entities\LogEntry;
+use Powerplanetonline\LogViewer\Tests\TestCase;
 
 /**
  * Class     LogEntryTest
  *
- * @package  Arcanedev\LogViewer\Tests\Entities
+ * @package  Powerplanetonline\LogViewer\Tests\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogEntryTest extends TestCase
@@ -44,7 +44,7 @@ class LogEntryTest extends TestCase
     public function it_can_be_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Entities\\LogEntry',
+            'Powerplanetonline\\LogViewer\\Entities\\LogEntry',
             $this->entry
         );
         $this->assertLogEntry('2015-01-01', $this->entry);

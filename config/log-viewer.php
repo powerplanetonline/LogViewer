@@ -12,9 +12,9 @@ return [
      | ------------------------------------------------------------------------------------------------
      */
     'pattern'       => [
-        'prefix'    => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_PREFIX,
-        'date'      => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_DATE,
-        'extension' => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_EXTENSION,
+        'prefix'    => \Powerplanetonline\LogViewer\Contracts\FilesystemInterface::PATTERN_PREFIX,
+        'date'      => \Powerplanetonline\LogViewer\Contracts\FilesystemInterface::PATTERN_DATE,
+        'extension' => \Powerplanetonline\LogViewer\Contracts\FilesystemInterface::PATTERN_EXTENSION,
     ],
 
     /* ------------------------------------------------------------------------------------------------

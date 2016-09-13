@@ -1,13 +1,13 @@
-<?php namespace Arcanedev\LogViewer\Entities;
+<?php namespace Powerplanetonline\LogViewer\Entities;
 
-use Arcanedev\LogViewer\Utilities\LogParser;
+use Powerplanetonline\LogViewer\Utilities\LogParser;
 use Arcanedev\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class     LogEntryCollection
  *
- * @package  Arcanedev\LogViewer\Entities
+ * @package  Powerplanetonline\LogViewer\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogEntryCollection extends Collection

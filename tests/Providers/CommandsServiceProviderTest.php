@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Providers;
+<?php namespace Powerplanetonline\LogViewer\Tests\Providers;
 
-use Arcanedev\LogViewer\Providers\CommandsServiceProvider;
-use Arcanedev\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Providers\CommandsServiceProvider;
+use Powerplanetonline\LogViewer\Tests\TestCase;
 
 /**
  * Class     CommandsServiceProviderTest
  *
- * @package  Arcanedev\LogViewer\Tests\Providers
+ * @package  Powerplanetonline\LogViewer\Tests\Providers
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class CommandsServiceProviderTest extends TestCase
@@ -34,7 +34,7 @@ class CommandsServiceProviderTest extends TestCase
         parent::setUp();
 
         $this->provider = $this->app->getProvider(
-            'Arcanedev\\LogViewer\\Providers\\CommandsServiceProvider'
+            'Powerplanetonline\\LogViewer\\Providers\\CommandsServiceProvider'
         );
     }
 

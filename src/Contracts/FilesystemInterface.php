@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Contracts;
+<?php namespace Powerplanetonline\LogViewer\Contracts;
 
-use Arcanedev\LogViewer\Exceptions\FilesystemException;
+use Powerplanetonline\LogViewer\Exceptions\FilesystemException;
 
 /**
  * Interface  FilesystemInterface
  *
- * @package   Arcanedev\LogViewer\Contracts
+ * @package   Powerplanetonline\LogViewer\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface FilesystemInterface extends Patternable

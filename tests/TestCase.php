@@ -1,9 +1,9 @@
-<?php namespace Arcanedev\LogViewer\Tests;
+<?php namespace Powerplanetonline\LogViewer\Tests;
 
-use Arcanedev\LogViewer\Contracts\Table as TableContract;
-use Arcanedev\LogViewer\Entities\Log;
-use Arcanedev\LogViewer\Entities\LogEntry;
-use Arcanedev\LogViewer\Entities\LogEntryCollection;
+use Powerplanetonline\LogViewer\Contracts\Table as TableContract;
+use Powerplanetonline\LogViewer\Entities\Log;
+use Powerplanetonline\LogViewer\Entities\LogEntry;
+use Powerplanetonline\LogViewer\Entities\LogEntryCollection;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Foundation\Application;
@@ -14,7 +14,7 @@ use ReflectionClass;
 /**
  * Class     TestCase
  *
- * @package  Arcanedev\LogViewer\Tests
+ * @package  Powerplanetonline\LogViewer\Tests
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 abstract class TestCase extends BaseTestCase
@@ -64,7 +64,7 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Arcanedev\LogViewer\LogViewerServiceProvider::class,
+            \Powerplanetonline\LogViewer\LogViewerServiceProvider::class,
         ];
     }
 
@@ -105,7 +105,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert Log object.
      *
-     * @param  \Arcanedev\LogViewer\Entities\Log  $log
+     * @param  \Powerplanetonline\LogViewer\Entities\Log  $log
      * @param  string                             $date
      */
     protected function assertLog(Log $log, $date)
@@ -118,7 +118,7 @@ abstract class TestCase extends BaseTestCase
      * Assert Log entries object.
      *
      * @param  string                                            $date
-     * @param  \Arcanedev\LogViewer\Entities\LogEntryCollection  $entries
+     * @param  \Powerplanetonline\LogViewer\Entities\LogEntryCollection  $entries
      */
     protected function assertLogEntries($date, LogEntryCollection $entries)
     {
@@ -131,7 +131,7 @@ abstract class TestCase extends BaseTestCase
      * Assert log entry object.
      *
      * @param  string                                  $date
-     * @param  \Arcanedev\LogViewer\Entities\LogEntry  $entry
+     * @param  \Powerplanetonline\LogViewer\Entities\LogEntry  $entry
      */
     protected function assertLogEntry($date, LogEntry $entry)
     {
@@ -248,7 +248,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert table instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Table  $table
+     * @param  \Powerplanetonline\LogViewer\Contracts\Table  $table
      */
     protected function assertTable(TableContract $table)
     {
@@ -260,7 +260,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert table header.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Table  $table
+     * @param  \Powerplanetonline\LogViewer\Contracts\Table  $table
      */
     protected function assertTableHeader(TableContract $table)
     {
@@ -273,7 +273,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert table rows.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Table  $table
+     * @param  \Powerplanetonline\LogViewer\Contracts\Table  $table
      */
     protected function assertTableRows(TableContract $table)
     {
@@ -302,7 +302,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert table footer.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\Table  $table
+     * @param  \Powerplanetonline\LogViewer\Contracts\Table  $table
      */
     protected function assertTableFooter(TableContract $table)
     {
@@ -341,7 +341,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Get Filesystem Utility instance.
      *
-     * @return \Arcanedev\LogViewer\Utilities\Filesystem
+     * @return \Powerplanetonline\LogViewer\Utilities\Filesystem
      */
     protected function filesystem()
     {
@@ -407,7 +407,7 @@ abstract class TestCase extends BaseTestCase
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return \Powerplanetonline\LogViewer\Entities\Log
      */
     protected function getLog($date)
     {

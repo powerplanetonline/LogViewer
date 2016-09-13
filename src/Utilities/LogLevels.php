@@ -1,6 +1,6 @@
-<?php namespace Arcanedev\LogViewer\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\LogLevelsInterface;
+use Powerplanetonline\LogViewer\Contracts\LogLevelsInterface;
 use Illuminate\Translation\Translator;
 use Psr\Log\LogLevel;
 use ReflectionClass;
@@ -8,7 +8,7 @@ use ReflectionClass;
 /**
  * Class     LogLevels
  *
- * @package  Arcanedev\LogViewer\Utilities
+ * @package  Powerplanetonline\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogLevels implements LogLevelsInterface

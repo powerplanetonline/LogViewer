@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Contracts\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Contracts\Utilities;
 
-use Arcanedev\LogViewer\Contracts\Patternable;
+use Powerplanetonline\LogViewer\Contracts\Patternable;
 
 /**
  * Interface  Filesystem
  *
- * @package   Arcanedev\LogViewer\Contracts\Utilities
+ * @package   Powerplanetonline\LogViewer\Contracts\Utilities
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface Filesystem extends Patternable
@@ -99,7 +99,7 @@ interface Filesystem extends Patternable
      *
      * @return string
      *
-     * @throws \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @throws \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     public function read($date);
 
@@ -110,7 +110,7 @@ interface Filesystem extends Patternable
      *
      * @return bool
      *
-     * @throws \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @throws \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     public function delete($date);
 

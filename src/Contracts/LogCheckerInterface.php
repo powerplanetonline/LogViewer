@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Contracts;
+<?php namespace Powerplanetonline\LogViewer\Contracts;
 
 use \Illuminate\Contracts\Config\Repository as Config;
 
 /**
  * Interface  LogCheckerInterface
  *
- * @package   Arcanedev\LogViewer\Contracts
+ * @package   Powerplanetonline\LogViewer\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface LogCheckerInterface
@@ -26,7 +26,7 @@ interface LogCheckerInterface
     /**
      * Set the Filesystem instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
+     * @param  \Powerplanetonline\LogViewer\Contracts\FilesystemInterface  $filesystem
      *
      * @return self
      */

@@ -1,13 +1,13 @@
-<?php namespace Arcanedev\LogViewer\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\FilesystemInterface;
-use Arcanedev\LogViewer\Exceptions\FilesystemException;
+use Powerplanetonline\LogViewer\Contracts\FilesystemInterface;
+use Powerplanetonline\LogViewer\Exceptions\FilesystemException;
 use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
 
 /**
  * Class     Filesystem
  *
- * @package  Arcanedev\LogViewer\Utilities
+ * @package  Powerplanetonline\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class Filesystem implements FilesystemInterface
@@ -219,7 +219,7 @@ class Filesystem implements FilesystemInterface
      *
      * @return string
      *
-     * @throws \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @throws \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     public function read($date)
     {
@@ -240,7 +240,7 @@ class Filesystem implements FilesystemInterface
      *
      * @return bool
      *
-     * @throws \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @throws \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     public function delete($date)
     {
@@ -264,7 +264,7 @@ class Filesystem implements FilesystemInterface
      *
      * @return string
      *
-     * @throws \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @throws \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     public function path($date)
     {
@@ -299,7 +299,7 @@ class Filesystem implements FilesystemInterface
      *
      * @return string
      *
-     * @throws \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @throws \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     private function getLogPath($date)
     {

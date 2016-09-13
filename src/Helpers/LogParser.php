@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Helpers;
+<?php namespace Powerplanetonline\LogViewer\Helpers;
 
-use Arcanedev\LogViewer\Utilities\LogLevels;
+use Powerplanetonline\LogViewer\Utilities\LogLevels;
 
 /**
  * Class     LogParser
  *
- * @package  Arcanedev\LogViewer\Helpers
+ * @package  Powerplanetonline\LogViewer\Helpers
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogParser

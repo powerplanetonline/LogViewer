@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Utilities;
 
-use Arcanedev\LogViewer\Utilities\LogLevels;
-use Arcanedev\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Utilities\LogLevels;
+use Powerplanetonline\LogViewer\Tests\TestCase;
 
 /**
  * Class     LogLevelsTest
  *
- * @package  Arcanedev\LogViewer\Tests\Utilities
+ * @package  Powerplanetonline\LogViewer\Tests\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogLevelsTest extends TestCase
@@ -15,7 +15,7 @@ class LogLevelsTest extends TestCase
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /** @var \Arcanedev\LogViewer\Utilities\LogLevels  */
+    /** @var \Powerplanetonline\LogViewer\Utilities\LogLevels  */
     private $levels;
 
     /* ------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ class LogLevelsTest extends TestCase
     public function it_can_be_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Utilities\\LogLevels',
+            'Powerplanetonline\\LogViewer\\Utilities\\LogLevels',
             $this->levels
         );
     }

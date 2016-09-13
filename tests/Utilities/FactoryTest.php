@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Utilities;
 
-use Arcanedev\LogViewer\Tests\TestCase;
-use Arcanedev\LogViewer\Utilities\Factory;
+use Powerplanetonline\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Utilities\Factory;
 
 /**
  * Class     FactoryTest
  *
- * @package  Arcanedev\LogViewer\Tests\Utilities
+ * @package  Powerplanetonline\LogViewer\Tests\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class FactoryTest extends TestCase
@@ -44,7 +44,7 @@ class FactoryTest extends TestCase
     public function it_can_be_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Utilities\\Factory',
+            'Powerplanetonline\\LogViewer\\Utilities\\Factory',
             $this->logFactory
         );
     }
@@ -53,8 +53,8 @@ class FactoryTest extends TestCase
     public function it_can_get_filesystem_object()
     {
         $expectations = [
-            \Arcanedev\LogViewer\Contracts\Utilities\Filesystem::class,
-            \Arcanedev\LogViewer\Utilities\Filesystem::class,
+            \Powerplanetonline\LogViewer\Contracts\Utilities\Filesystem::class,
+            \Powerplanetonline\LogViewer\Utilities\Filesystem::class,
         ];
 
         foreach ($expectations as $expected) {
@@ -66,8 +66,8 @@ class FactoryTest extends TestCase
     public function it_can_get_levels_object()
     {
         $expectations = [
-            \Arcanedev\LogViewer\Contracts\Utilities\LogLevels::class,
-            \Arcanedev\LogViewer\Utilities\LogLevels::class,
+            \Powerplanetonline\LogViewer\Contracts\Utilities\LogLevels::class,
+            \Powerplanetonline\LogViewer\Utilities\LogLevels::class,
         ];
 
         foreach ($expectations as $expected) {
@@ -100,7 +100,7 @@ class FactoryTest extends TestCase
     {
         $logs = $this->logFactory->all();
 
-        $this->assertInstanceOf(\Arcanedev\LogViewer\Entities\LogCollection::class, $logs);
+        $this->assertInstanceOf(\Powerplanetonline\LogViewer\Entities\LogCollection::class, $logs);
         $this->assertCount(2, $logs);
     }
 
@@ -208,7 +208,7 @@ class FactoryTest extends TestCase
     /**
      * @test
      *
-     * @expectedException \Arcanedev\LogViewer\Exceptions\LogNotFoundException
+     * @expectedException \Powerplanetonline\LogViewer\Exceptions\LogNotFoundException
      */
     public function it_must_throw_a_filesystem_exception()
     {

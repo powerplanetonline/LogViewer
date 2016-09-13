@@ -4,7 +4,7 @@ if ( ! function_exists('log_viewer')) {
     /**
      * Get the LogViewer instance.
      *
-     * @return \Arcanedev\LogViewer\Contracts\LogViewerInterface
+     * @return \Powerplanetonline\LogViewer\Contracts\LogViewerInterface
      */
     function log_viewer() {
         return app('arcanedev.log-viewer');
@@ -15,7 +15,7 @@ if ( ! function_exists('log_levels')) {
     /**
      * Get the LogLevels instance.
      *
-     * @return \Arcanedev\LogViewer\Contracts\LogLevelsInterface
+     * @return \Powerplanetonline\LogViewer\Contracts\LogLevelsInterface
      */
     function log_levels() {
         return app('arcanedev.log-viewer.levels');
@@ -26,7 +26,7 @@ if ( ! function_exists('log_menu')) {
     /**
      * Get the LogMenu instance.
      *
-     * @return \Arcanedev\LogViewer\Contracts\LogMenuInterface
+     * @return \Powerplanetonline\LogViewer\Contracts\LogMenuInterface
      */
     function log_menu() {
         return app('arcanedev.log-viewer.menu');
@@ -37,7 +37,7 @@ if ( ! function_exists('log_styler')) {
     /**
      * Get the LogStyler instance.
      *
-     * @return \Arcanedev\LogViewer\Contracts\LogStylerInterface
+     * @return \Powerplanetonline\LogViewer\Contracts\LogStylerInterface
      */
     function log_styler() {
         return app('arcanedev.log-viewer.styler');

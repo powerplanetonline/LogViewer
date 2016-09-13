@@ -1,4 +1,4 @@
-<?php namespace Arcanedev\LogViewer\Entities;
+<?php namespace Powerplanetonline\LogViewer\Entities;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
@@ -9,7 +9,7 @@ use SplFileInfo;
 /**
  * Class     Log
  *
- * @package  Arcanedev\LogViewer\Entities
+ * @package  Powerplanetonline\LogViewer\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  *
  * @todo     Add a stats method

@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Utilities;
 
-use Arcanedev\LogViewer\Tests\TestCase;
-use Arcanedev\LogViewer\Utilities\LogChecker;
+use Powerplanetonline\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Utilities\LogChecker;
 
 /**
  * Class     LogCheckerTest
  *
- * @package  Arcanedev\LogViewer\Tests\Utilities
+ * @package  Powerplanetonline\LogViewer\Tests\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogCheckerTest extends TestCase
@@ -44,7 +44,7 @@ class LogCheckerTest extends TestCase
     public function it_can_be_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Utilities\\LogChecker',
+            'Powerplanetonline\\LogViewer\\Utilities\\LogChecker',
             $this->checker
         );
     }

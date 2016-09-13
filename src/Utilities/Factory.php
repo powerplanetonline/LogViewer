@@ -1,15 +1,15 @@
-<?php namespace Arcanedev\LogViewer\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\FactoryInterface;
-use Arcanedev\LogViewer\Contracts\FilesystemInterface;
-use Arcanedev\LogViewer\Contracts\LogLevelsInterface;
-use Arcanedev\LogViewer\Entities\LogCollection;
-use Arcanedev\LogViewer\Tables\StatsTable;
+use Powerplanetonline\LogViewer\Contracts\FactoryInterface;
+use Powerplanetonline\LogViewer\Contracts\FilesystemInterface;
+use Powerplanetonline\LogViewer\Contracts\LogLevelsInterface;
+use Powerplanetonline\LogViewer\Entities\LogCollection;
+use Powerplanetonline\LogViewer\Tables\StatsTable;
 
 /**
  * Class     Factory
  *
- * @package  Arcanedev\LogViewer\Utilities
+ * @package  Powerplanetonline\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class Factory implements FactoryInterface
@@ -21,12 +21,12 @@ class Factory implements FactoryInterface
     /**
      * The filesystem instance.
      *
-     * @var \Arcanedev\LogViewer\Contracts\FilesystemInterface
+     * @var \Powerplanetonline\LogViewer\Contracts\FilesystemInterface
      */
     protected $filesystem;
 
     /**
-     * @var \Arcanedev\LogViewer\Contracts\LogLevelsInterface
+     * @var \Powerplanetonline\LogViewer\Contracts\LogLevelsInterface
      */
     private $levels;
 
@@ -37,8 +37,8 @@ class Factory implements FactoryInterface
     /**
      * Create a new instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
-     * @param  \Arcanedev\LogViewer\Contracts\LogLevelsInterface   $levels
+     * @param  \Powerplanetonline\LogViewer\Contracts\FilesystemInterface  $filesystem
+     * @param  \Powerplanetonline\LogViewer\Contracts\LogLevelsInterface   $levels
      */
     public function __construct(
         FilesystemInterface $filesystem,
@@ -55,7 +55,7 @@ class Factory implements FactoryInterface
     /**
      * Get the filesystem instance.
      *
-     * @return \Arcanedev\LogViewer\Contracts\FilesystemInterface
+     * @return \Powerplanetonline\LogViewer\Contracts\FilesystemInterface
      */
     public function getFilesystem()
     {
@@ -65,7 +65,7 @@ class Factory implements FactoryInterface
     /**
      * Set the filesystem instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
+     * @param  \Powerplanetonline\LogViewer\Contracts\FilesystemInterface  $filesystem
      *
      * @return self
      */
@@ -79,7 +79,7 @@ class Factory implements FactoryInterface
     /**
      * Get the log levels instance.
      *
-     * @return \Arcanedev\LogViewer\Contracts\LogLevelsInterface
+     * @return \Powerplanetonline\LogViewer\Contracts\LogLevelsInterface
      */
     public function getLevels()
     {
@@ -89,7 +89,7 @@ class Factory implements FactoryInterface
     /**
      * Set the log levels instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\LogLevelsInterface  $levels
+     * @param  \Powerplanetonline\LogViewer\Contracts\LogLevelsInterface  $levels
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class Factory implements FactoryInterface
     /**
      * Get all logs.
      *
-     * @return \Arcanedev\LogViewer\Entities\LogCollection
+     * @return \Powerplanetonline\LogViewer\Entities\LogCollection
      */
     public function logs()
     {
@@ -160,7 +160,7 @@ class Factory implements FactoryInterface
     /**
      * Get all logs. (alias)
      *
-     * @return \Arcanedev\LogViewer\Entities\LogCollection
+     * @return \Powerplanetonline\LogViewer\Entities\LogCollection
      */
     public function all()
     {
@@ -184,7 +184,7 @@ class Factory implements FactoryInterface
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return \Powerplanetonline\LogViewer\Entities\Log
      */
     public function log($date)
     {
@@ -196,7 +196,7 @@ class Factory implements FactoryInterface
      *
      * @param  string  $date
      *
-     * @return \Arcanedev\LogViewer\Entities\Log
+     * @return \Powerplanetonline\LogViewer\Entities\Log
      */
     public function get($date)
     {
@@ -209,7 +209,7 @@ class Factory implements FactoryInterface
      * @param  string  $date
      * @param  string  $level
      *
-     * @return \Arcanedev\LogViewer\Entities\LogEntryCollection
+     * @return \Powerplanetonline\LogViewer\Entities\LogEntryCollection
      */
     public function entries($date, $level = 'all')
     {
@@ -231,7 +231,7 @@ class Factory implements FactoryInterface
      *
      * @param  string|null  $locale
      *
-     * @return \Arcanedev\LogViewer\Tables\StatsTable
+     * @return \Powerplanetonline\LogViewer\Tables\StatsTable
      */
     public function statsTable($locale = null)
     {

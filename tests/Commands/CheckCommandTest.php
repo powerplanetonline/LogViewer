@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Tests\Commands;
+<?php namespace Powerplanetonline\LogViewer\Tests\Commands;
 
-use Arcanedev\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Tests\TestCase;
 
 /**
  * Class     CheckCommandTest
  *
- * @package  Arcanedev\LogViewer\Tests\Commands
+ * @package  Powerplanetonline\LogViewer\Tests\Commands
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class CheckCommandTest extends TestCase

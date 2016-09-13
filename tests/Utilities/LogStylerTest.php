@@ -1,11 +1,11 @@
-<?php namespace Arcanedev\LogViewer\Tests\Utilities;
-use Arcanedev\LogViewer\Tests\TestCase;
-use Arcanedev\LogViewer\Utilities\LogStyler;
+<?php namespace Powerplanetonline\LogViewer\Tests\Utilities;
+use Powerplanetonline\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Utilities\LogStyler;
 
 /**
  * Class     LogStylerTest
  *
- * @package  Arcanedev\LogViewer\Tests\Utilities
+ * @package  Powerplanetonline\LogViewer\Tests\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogStylerTest extends TestCase
@@ -43,7 +43,7 @@ class LogStylerTest extends TestCase
     public function it_can_ben_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Utilities\\LogStyler',
+            'Powerplanetonline\\LogViewer\\Utilities\\LogStyler',
             $this->styler
         );
     }

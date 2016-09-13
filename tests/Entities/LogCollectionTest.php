@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Entities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Entities;
 
-use Arcanedev\LogViewer\Entities\LogCollection;
-use Arcanedev\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Entities\LogCollection;
+use Powerplanetonline\LogViewer\Tests\TestCase;
 
 /**
  * Class     LogCollectionTest
  *
- * @package  Arcanedev\LogViewer\Tests\Entities
+ * @package  Powerplanetonline\LogViewer\Tests\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class LogCollectionTest extends TestCase
@@ -43,7 +43,7 @@ class LogCollectionTest extends TestCase
     /** @test */
     public function it_can_be_instantiated()
     {
-        $this->assertInstanceOf('Arcanedev\\LogViewer\\Entities\\LogCollection', $this->logs);
+        $this->assertInstanceOf('Powerplanetonline\\LogViewer\\Entities\\LogCollection', $this->logs);
     }
 
     /** @test */
@@ -169,7 +169,7 @@ class LogCollectionTest extends TestCase
     /**
      * @test
      *
-     * @expectedException        \Arcanedev\LogViewer\Exceptions\LogNotFoundException
+     * @expectedException        \Powerplanetonline\LogViewer\Exceptions\LogNotFoundException
      * @expectedExceptionMessage Log not found in this date [2222-01-01]
      */
     public function it_must_throw_a_log_not_found_on_get_method()
@@ -180,7 +180,7 @@ class LogCollectionTest extends TestCase
     /**
      * @test
      *
-     * @expectedException        \Arcanedev\LogViewer\Exceptions\LogNotFoundException
+     * @expectedException        \Powerplanetonline\LogViewer\Exceptions\LogNotFoundException
      * @expectedExceptionMessage Log not found in this date [2222-01-01]
      */
     public function it_must_throw_a_log_not_found_on_log_method()

@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tables;
+<?php namespace Powerplanetonline\LogViewer\Tables;
 
-use Arcanedev\LogViewer\Bases\Table;
-use Arcanedev\LogViewer\Contracts\LogLevelsInterface;
+use Powerplanetonline\LogViewer\Bases\Table;
+use Powerplanetonline\LogViewer\Contracts\LogLevelsInterface;
 
 /**
  * Class     StatsTable
  *
- * @package  Arcanedev\LogViewer\Tables
+ * @package  Powerplanetonline\LogViewer\Tables
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class StatsTable extends Table

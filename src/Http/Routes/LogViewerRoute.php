@@ -1,4 +1,4 @@
-<?php namespace Arcanedev\LogViewer\Http\Routes;
+<?php namespace Powerplanetonline\LogViewer\Http\Routes;
 
 use Arcanedev\Support\Bases\RouteRegister;
 use Illuminate\Contracts\Routing\Registrar as Router;
@@ -6,7 +6,7 @@ use Illuminate\Contracts\Routing\Registrar as Router;
 /**
  * Class     LogViewerRoute
  *
- * @package  Arcanedev\LogViewer\Http\Routes
+ * @package  Powerplanetonline\LogViewer\Http\Routes
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  *
  * @codeCoverageIgnore

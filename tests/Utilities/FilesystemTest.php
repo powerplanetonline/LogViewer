@@ -1,12 +1,12 @@
-<?php namespace Arcanedev\LogViewer\Tests\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Tests\Utilities;
 
-use Arcanedev\LogViewer\Tests\TestCase;
-use Arcanedev\LogViewer\Utilities\Filesystem;
+use Powerplanetonline\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Utilities\Filesystem;
 
 /**
  * Class     FilesystemTest
  *
- * @package  Arcanedev\LogViewer\Tests\Utilities
+ * @package  Powerplanetonline\LogViewer\Tests\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class FilesystemTest extends TestCase
@@ -44,7 +44,7 @@ class FilesystemTest extends TestCase
     public function it_can_be_instantiated()
     {
         $this->assertInstanceOf(
-            'Arcanedev\\LogViewer\\Utilities\\Filesystem',
+            'Powerplanetonline\\LogViewer\\Utilities\\Filesystem',
             $this->filesystem
         );
     }
@@ -178,7 +178,7 @@ class FilesystemTest extends TestCase
     /**
      * @test
      *
-     * @expectedException \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @expectedException \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     public function it_must_throw_a_filesystem_exception_on_read()
     {
@@ -188,7 +188,7 @@ class FilesystemTest extends TestCase
     /**
      * @test
      *
-     * @expectedException \Arcanedev\LogViewer\Exceptions\FilesystemException
+     * @expectedException \Powerplanetonline\LogViewer\Exceptions\FilesystemException
      */
     public function it_must_throw_a_filesystem_exception_on_delete()
     {

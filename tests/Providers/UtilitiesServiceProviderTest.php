@@ -1,13 +1,13 @@
-<?php namespace Arcanedev\LogViewer\Tests\Providers;
+<?php namespace Powerplanetonline\LogViewer\Tests\Providers;
 
-use Arcanedev\LogViewer\Providers\UtilitiesServiceProvider;
-use Arcanedev\LogViewer\Tests\TestCase;
-use Arcanedev\LogViewer\Contracts;
+use Powerplanetonline\LogViewer\Providers\UtilitiesServiceProvider;
+use Powerplanetonline\LogViewer\Tests\TestCase;
+use Powerplanetonline\LogViewer\Contracts;
 
 /**
  * Class     UtilitiesServiceProviderTest
  *
- * @package  Arcanedev\LogViewer\Tests\Providers
+ * @package  Powerplanetonline\LogViewer\Tests\Providers
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class UtilitiesServiceProviderTest extends TestCase
@@ -28,7 +28,7 @@ class UtilitiesServiceProviderTest extends TestCase
         parent::setUp();
 
         $this->provider = $this->app->getProvider(
-            \Arcanedev\LogViewer\Providers\UtilitiesServiceProvider::class
+            \Powerplanetonline\LogViewer\Providers\UtilitiesServiceProvider::class
         );
     }
 
@@ -50,7 +50,7 @@ class UtilitiesServiceProviderTest extends TestCase
         $expectations = [
             \Illuminate\Support\ServiceProvider::class,
             \Arcanedev\Support\ServiceProvider::class,
-            \Arcanedev\LogViewer\Providers\UtilitiesServiceProvider::class,
+            \Powerplanetonline\LogViewer\Providers\UtilitiesServiceProvider::class,
         ];
 
         foreach ($expectations as $expected) {

@@ -1,13 +1,13 @@
-<?php namespace Arcanedev\LogViewer\Utilities;
+<?php namespace Powerplanetonline\LogViewer\Utilities;
 
-use Arcanedev\LogViewer\Contracts\FilesystemInterface;
-use Arcanedev\LogViewer\Contracts\LogCheckerInterface;
+use Powerplanetonline\LogViewer\Contracts\FilesystemInterface;
+use Powerplanetonline\LogViewer\Contracts\LogCheckerInterface;
 use Illuminate\Contracts\Config\Repository as Config;
 
 /**
  * Class     LogChecker
  *
- * @package  Arcanedev\LogViewer\Utilities
+ * @package  Powerplanetonline\LogViewer\Utilities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  *
  * @todo     Adding the translation or not ??
@@ -41,7 +41,7 @@ class LogChecker implements LogCheckerInterface
     /**
      * The filesystem instance.
      *
-     * @var \Arcanedev\LogViewer\Contracts\FilesystemInterface
+     * @var \Powerplanetonline\LogViewer\Contracts\FilesystemInterface
      */
     private $filesystem;
 
@@ -81,7 +81,7 @@ class LogChecker implements LogCheckerInterface
      * Make LogChecker instance.
      *
      * @param  \Illuminate\Contracts\Config\Repository             $config
-     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
+     * @param  \Powerplanetonline\LogViewer\Contracts\FilesystemInterface  $filesystem
      */
     public function __construct(Config $config, FilesystemInterface $filesystem)
     {
@@ -113,7 +113,7 @@ class LogChecker implements LogCheckerInterface
     /**
      * Set the Filesystem instance.
      *
-     * @param  \Arcanedev\LogViewer\Contracts\FilesystemInterface  $filesystem
+     * @param  \Powerplanetonline\LogViewer\Contracts\FilesystemInterface  $filesystem
      *
      * @return self
      */

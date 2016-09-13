@@ -1,16 +1,16 @@
-<?php namespace Arcanedev\LogViewer\Providers;
+<?php namespace Powerplanetonline\LogViewer\Providers;
 
-use Arcanedev\LogViewer\Commands\CheckCommand;
-use Arcanedev\LogViewer\Commands\PublishCommand;
-use Arcanedev\LogViewer\Commands\StatsCommand;
-use Arcanedev\LogViewer\LogViewer;
+use Powerplanetonline\LogViewer\Commands\CheckCommand;
+use Powerplanetonline\LogViewer\Commands\PublishCommand;
+use Powerplanetonline\LogViewer\Commands\StatsCommand;
+use Powerplanetonline\LogViewer\LogViewer;
 use Arcanedev\Support\ServiceProvider;
 use Closure;
 
 /**
  * Class     CommandsServiceProvider
  *
- * @package  Arcanedev\LogViewer\Providers
+ * @package  Powerplanetonline\LogViewer\Providers
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class CommandsServiceProvider extends ServiceProvider
